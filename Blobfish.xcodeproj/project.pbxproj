@@ -7,9 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		300F43CE1C95875500170B26 /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 300F43CA1C95875500170B26 /* Reachability.framework */; };
+		300F43CF1C95875500170B26 /* Reachability.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 300F43CB1C95875500170B26 /* Reachability.framework.dSYM */; };
+		300F43D01C95875500170B26 /* Serializable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 300F43CC1C95875500170B26 /* Serializable.framework */; };
+		300F43D11C95875500170B26 /* Serializable.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 300F43CD1C95875500170B26 /* Serializable.framework.dSYM */; };
+		307ED5341C98AEE7002B7B74 /* ErrorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA212F1C957F1500DC883C /* ErrorHelper.swift */; };
+		30925AF81C95892E00895BE6 /* ErrorRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA21301C957F1500DC883C /* ErrorRepresentable.swift */; };
+		30925AFB1C9589B800895BE6 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30925AFA1C9589B800895BE6 /* Error.swift */; };
 		30BA21181C957E3100DC883C /* Blobfish.h in Headers */ = {isa = PBXBuildFile; fileRef = 30BA21171C957E3100DC883C /* Blobfish.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		30BA211F1C957E3100DC883C /* Blobfish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30BA21141C957E3100DC883C /* Blobfish.framework */; };
-		30BA21241C957E3100DC883C /* BlobfishTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA21231C957E3100DC883C /* BlobfishTests.swift */; };
+		30BA21391C957F7E00DC883C /* MessageBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA21311C957F1500DC883C /* MessageBar.swift */; };
+		30CC1B1F1C95858900DB923F /* SerializableErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA21331C957F1500DC883C /* SerializableErrorExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,12 +31,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		300F43CA1C95875500170B26 /* Reachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reachability.framework; path = Carthage/Build/iOS/Reachability.framework; sourceTree = "<group>"; };
+		300F43CB1C95875500170B26 /* Reachability.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Reachability.framework.dSYM; path = Carthage/Build/iOS/Reachability.framework.dSYM; sourceTree = "<group>"; };
+		300F43CC1C95875500170B26 /* Serializable.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Serializable.framework; path = Carthage/Build/iOS/Serializable.framework; sourceTree = "<group>"; };
+		300F43CD1C95875500170B26 /* Serializable.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Serializable.framework.dSYM; path = Carthage/Build/iOS/Serializable.framework.dSYM; sourceTree = "<group>"; };
+		30925AFA1C9589B800895BE6 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
 		30BA21141C957E3100DC883C /* Blobfish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Blobfish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30BA21171C957E3100DC883C /* Blobfish.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Blobfish.h; sourceTree = "<group>"; };
 		30BA21191C957E3100DC883C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30BA211E1C957E3100DC883C /* BlobfishTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlobfishTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30BA21231C957E3100DC883C /* BlobfishTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlobfishTests.swift; sourceTree = "<group>"; };
 		30BA21251C957E3100DC883C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30BA212F1C957F1500DC883C /* ErrorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHelper.swift; sourceTree = "<group>"; };
+		30BA21301C957F1500DC883C /* ErrorRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorRepresentable.swift; sourceTree = "<group>"; };
+		30BA21311C957F1500DC883C /* MessageBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBar.swift; sourceTree = "<group>"; };
+		30BA21321C957F1500DC883C /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		30BA21331C957F1500DC883C /* SerializableErrorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableErrorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +54,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				300F43CE1C95875500170B26 /* Reachability.framework in Frameworks */,
+				300F43D01C95875500170B26 /* Serializable.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,6 +75,7 @@
 			children = (
 				30BA21161C957E3100DC883C /* Blobfish */,
 				30BA21221C957E3100DC883C /* BlobfishTests */,
+				30BA213A1C957FC000DC883C /* Frameworks */,
 				30BA21151C957E3100DC883C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -71,6 +92,7 @@
 		30BA21161C957E3100DC883C /* Blobfish */ = {
 			isa = PBXGroup;
 			children = (
+				30BA212E1C957F1500DC883C /* Classes */,
 				30BA21171C957E3100DC883C /* Blobfish.h */,
 				30BA21191C957E3100DC883C /* Info.plist */,
 			);
@@ -84,6 +106,30 @@
 				30BA21251C957E3100DC883C /* Info.plist */,
 			);
 			path = BlobfishTests;
+			sourceTree = "<group>";
+		};
+		30BA212E1C957F1500DC883C /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				30BA212F1C957F1500DC883C /* ErrorHelper.swift */,
+				30BA21301C957F1500DC883C /* ErrorRepresentable.swift */,
+				30BA21311C957F1500DC883C /* MessageBar.swift */,
+				30BA21321C957F1500DC883C /* Reachability.swift */,
+				30BA21331C957F1500DC883C /* SerializableErrorExtension.swift */,
+				30925AFA1C9589B800895BE6 /* Error.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		30BA213A1C957FC000DC883C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				300F43CA1C95875500170B26 /* Reachability.framework */,
+				300F43CB1C95875500170B26 /* Reachability.framework.dSYM */,
+				300F43CC1C95875500170B26 /* Serializable.framework */,
+				300F43CD1C95875500170B26 /* Serializable.framework.dSYM */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +223,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				300F43CF1C95875500170B26 /* Reachability.framework.dSYM in Resources */,
+				300F43D11C95875500170B26 /* Serializable.framework.dSYM in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +242,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30BA21391C957F7E00DC883C /* MessageBar.swift in Sources */,
+				30925AF81C95892E00895BE6 /* ErrorRepresentable.swift in Sources */,
+				307ED5341C98AEE7002B7B74 /* ErrorHelper.swift in Sources */,
+				30925AFB1C9589B800895BE6 /* Error.swift in Sources */,
+				30CC1B1F1C95858900DB923F /* SerializableErrorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +254,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30BA21241C957E3100DC883C /* BlobfishTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,6 +292,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -254,7 +307,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -289,6 +342,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Carthage/Build/iOS";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -297,7 +351,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -314,6 +368,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Blobfish/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -330,6 +388,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Blobfish/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -378,6 +440,7 @@
 				30BA212A1C957E3100DC883C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		30BA212B1C957E3100DC883C /* Build configuration list for PBXNativeTarget "BlobfishTests" */ = {
 			isa = XCConfigurationList;
@@ -386,6 +449,7 @@
 				30BA212D1C957E3100DC883C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

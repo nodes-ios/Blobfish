@@ -1,0 +1,10 @@
+framework module Serializable {
+  umbrella header "Serializable.h"
+
+  export *
+  module * { export * }
+}
+
+module Serializable.Swift {
+    header "Serializable-Swift.h"
+}
