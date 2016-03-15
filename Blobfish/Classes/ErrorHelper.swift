@@ -14,7 +14,11 @@ public class Blobfish {
     
     private static var dispatchOnceToken: dispatch_once_t = 0
     
-    private lazy var reachability = try? Reachability.reachabilityForInternetConnection()
+    private var reachability = try? Reachability.reachabilityForInternetConnection() {
+        didSet {
+            self.reachabilityInitialization()
+        }
+    }
     
     public typealias ErrorHandlerAlertCompletion = (retryButtonClicked:Bool) -> Void
     public typealias ErrorHandlerShowAlertBlock = (message:String, ok:String, retry:String?, completion:ErrorHandlerAlertCompletion?) -> Void
