@@ -15,6 +15,11 @@ public struct Blob {
     
     public enum Style {
         case Overlay
-        case Alert(message:String?, actions: [UIAlertAction])
+        case Alert(message:String?, actions: [AlertAction])
+    }
+    
+    public struct AlertAction {
+        public let title: String
+        public let handler:(()->Void)?
     }
 }

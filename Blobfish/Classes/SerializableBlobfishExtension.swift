@@ -108,7 +108,7 @@ extension Parser.Error: Blobable {
     public static var blobForUnknownError:(code:Int, localizedStringForCode:String) -> Blob = { (code, localizedStringForCode) in
         print("Warning! Please assign values to all 'messageFor***' static properties on Serializable.Parser.Error.. Using default values...")
         let title = "_An error occured"
-        let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        let action = Blob.AlertAction(title: "OK", handler: nil)
         return Blob(title: title, style: .Alert(message:"(\(code) " + localizedStringForCode + ")", actions: [action]))
     }
     

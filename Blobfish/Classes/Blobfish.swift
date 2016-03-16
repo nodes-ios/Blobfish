@@ -21,7 +21,7 @@ public class Blobfish {
     }
     
     public typealias ErrorHandlerAlertCompletion = (retryButtonClicked:Bool) -> Void
-    public typealias ErrorHandlerShowAlertBlock = (title:String, message:String?, actions:[UIAlertAction]) -> Void
+    public typealias ErrorHandlerShowAlertBlock = (title:String, message:String?, actions:[Blob.AlertAction]) -> Void
     
     public static let sharedInstance = Blobfish()
     
@@ -81,7 +81,12 @@ public class Blobfish {
         (title, message, actions) in
         
         let alert = UIAlertController(title: title, message:message, preferredStyle: UIAlertControllerStyle.Alert)
-        for action in actions { alert.addAction(action) }
+        for action in actions {
+            alert.addAction(UIAlertAction(title: action.title, style: .Default, handler: { (_) in
+                Blobfish.hideAlertWindow()
+                action.handler?()
+            }))
+        }
         
         if Blobfish.sharedInstance.alertWindow.rootViewController == nil {
             Blobfish.sharedInstance.alertWindow.rootViewController = UIViewController()
