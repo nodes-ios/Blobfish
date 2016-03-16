@@ -7,14 +7,14 @@
 //
 
 import Foundation
+import UIKit
 
-public enum Error {
-    case Connection(message: String, style: Style)
-    case Token(message: String, okButtonText:String)
-    case Unknown(message: String, okButtonText:String)
+public struct Blob {
+    let title: String
+    let style: Style
     
     public enum Style {
         case Overlay
-        case Alert(okButtonText:String, retryButtonText: String?)
+        case Alert(message:String?, actions: [UIAlertAction])
     }
 }

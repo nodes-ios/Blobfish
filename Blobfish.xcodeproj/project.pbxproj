@@ -111,10 +111,10 @@
 			isa = PBXGroup;
 			children = (
 				30BA212F1C957F1500DC883C /* Blobfish.swift */,
-				30BA21301C957F1500DC883C /* ErrorRepresentable.swift */,
 				30BA21311C957F1500DC883C /* MessageBar.swift */,
-				30BA21331C957F1500DC883C /* SerializableErrorExtension.swift */,
 				30925AFA1C9589B800895BE6 /* Error.swift */,
+				30BA21301C957F1500DC883C /* ErrorRepresentable.swift */,
+				30BA21331C957F1500DC883C /* SerializableErrorExtension.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";

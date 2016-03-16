@@ -8,6 +8,6 @@
 
 import Foundation
 
-public protocol ErrorRepresentable {
-    func blobfishError() -> Error
+public protocol Blobable {
+    var blob:Blob { get }
 }
