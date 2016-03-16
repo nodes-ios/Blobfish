@@ -80,7 +80,7 @@ public class Blobfish {
     public var showAlertBlock: ErrorHandlerShowAlertBlock = {
         (title, message, actions) in
         
-        let alert = UIAlertController(title: message, message:message, preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: title, message:message, preferredStyle: UIAlertControllerStyle.Alert)
         for action in actions { alert.addAction(action) }
         
         if Blobfish.sharedInstance.alertWindow.rootViewController == nil {

@@ -12,12 +12,12 @@
 		300F43D01C95875500170B26 /* Serializable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 300F43CC1C95875500170B26 /* Serializable.framework */; };
 		300F43D11C95875500170B26 /* Serializable.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 300F43CD1C95875500170B26 /* Serializable.framework.dSYM */; };
 		307ED5341C98AEE7002B7B74 /* Blobfish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA212F1C957F1500DC883C /* Blobfish.swift */; };
-		30925AF81C95892E00895BE6 /* ErrorRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA21301C957F1500DC883C /* ErrorRepresentable.swift */; };
-		30925AFB1C9589B800895BE6 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30925AFA1C9589B800895BE6 /* Error.swift */; };
+		30925AF81C95892E00895BE6 /* Blobable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA21301C957F1500DC883C /* Blobable.swift */; };
+		30925AFB1C9589B800895BE6 /* Blob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30925AFA1C9589B800895BE6 /* Blob.swift */; };
 		30BA21181C957E3100DC883C /* Blobfish.h in Headers */ = {isa = PBXBuildFile; fileRef = 30BA21171C957E3100DC883C /* Blobfish.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		30BA211F1C957E3100DC883C /* Blobfish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30BA21141C957E3100DC883C /* Blobfish.framework */; };
 		30BA21391C957F7E00DC883C /* MessageBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA21311C957F1500DC883C /* MessageBar.swift */; };
-		30CC1B1F1C95858900DB923F /* SerializableErrorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA21331C957F1500DC883C /* SerializableErrorExtension.swift */; };
+		30CC1B1F1C95858900DB923F /* SerializableBlobfishExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA21331C957F1500DC883C /* SerializableBlobfishExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +35,7 @@
 		300F43CB1C95875500170B26 /* Reachability.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Reachability.framework.dSYM; path = Carthage/Build/iOS/Reachability.framework.dSYM; sourceTree = "<group>"; };
 		300F43CC1C95875500170B26 /* Serializable.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Serializable.framework; path = Carthage/Build/iOS/Serializable.framework; sourceTree = "<group>"; };
 		300F43CD1C95875500170B26 /* Serializable.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Serializable.framework.dSYM; path = Carthage/Build/iOS/Serializable.framework.dSYM; sourceTree = "<group>"; };
-		30925AFA1C9589B800895BE6 /* Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		30925AFA1C9589B800895BE6 /* Blob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blob.swift; sourceTree = "<group>"; };
 		30BA21141C957E3100DC883C /* Blobfish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Blobfish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30BA21171C957E3100DC883C /* Blobfish.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Blobfish.h; sourceTree = "<group>"; };
 		30BA21191C957E3100DC883C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -43,9 +43,9 @@
 		30BA21231C957E3100DC883C /* BlobfishTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlobfishTests.swift; sourceTree = "<group>"; };
 		30BA21251C957E3100DC883C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30BA212F1C957F1500DC883C /* Blobfish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blobfish.swift; sourceTree = "<group>"; };
-		30BA21301C957F1500DC883C /* ErrorRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorRepresentable.swift; sourceTree = "<group>"; };
+		30BA21301C957F1500DC883C /* Blobable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blobable.swift; sourceTree = "<group>"; };
 		30BA21311C957F1500DC883C /* MessageBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBar.swift; sourceTree = "<group>"; };
-		30BA21331C957F1500DC883C /* SerializableErrorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableErrorExtension.swift; sourceTree = "<group>"; };
+		30BA21331C957F1500DC883C /* SerializableBlobfishExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableBlobfishExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,9 +112,9 @@
 			children = (
 				30BA212F1C957F1500DC883C /* Blobfish.swift */,
 				30BA21311C957F1500DC883C /* MessageBar.swift */,
-				30925AFA1C9589B800895BE6 /* Error.swift */,
-				30BA21301C957F1500DC883C /* ErrorRepresentable.swift */,
-				30BA21331C957F1500DC883C /* SerializableErrorExtension.swift */,
+				30925AFA1C9589B800895BE6 /* Blob.swift */,
+				30BA21301C957F1500DC883C /* Blobable.swift */,
+				30BA21331C957F1500DC883C /* SerializableBlobfishExtension.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -241,10 +241,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				30BA21391C957F7E00DC883C /* MessageBar.swift in Sources */,
-				30925AF81C95892E00895BE6 /* ErrorRepresentable.swift in Sources */,
+				30925AF81C95892E00895BE6 /* Blobable.swift in Sources */,
 				307ED5341C98AEE7002B7B74 /* Blobfish.swift in Sources */,
-				30925AFB1C9589B800895BE6 /* Error.swift in Sources */,
-				30CC1B1F1C95858900DB923F /* SerializableErrorExtension.swift in Sources */,
+				30925AFB1C9589B800895BE6 /* Blob.swift in Sources */,
+				30CC1B1F1C95858900DB923F /* SerializableBlobfishExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
