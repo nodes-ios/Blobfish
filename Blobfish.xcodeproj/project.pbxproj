@@ -11,7 +11,7 @@
 		300F43CF1C95875500170B26 /* Reachability.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 300F43CB1C95875500170B26 /* Reachability.framework.dSYM */; };
 		300F43D01C95875500170B26 /* Serializable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 300F43CC1C95875500170B26 /* Serializable.framework */; };
 		300F43D11C95875500170B26 /* Serializable.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 300F43CD1C95875500170B26 /* Serializable.framework.dSYM */; };
-		307ED5341C98AEE7002B7B74 /* ErrorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA212F1C957F1500DC883C /* ErrorHelper.swift */; };
+		307ED5341C98AEE7002B7B74 /* Blobfish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA212F1C957F1500DC883C /* Blobfish.swift */; };
 		30925AF81C95892E00895BE6 /* ErrorRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA21301C957F1500DC883C /* ErrorRepresentable.swift */; };
 		30925AFB1C9589B800895BE6 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30925AFA1C9589B800895BE6 /* Error.swift */; };
 		30BA21181C957E3100DC883C /* Blobfish.h in Headers */ = {isa = PBXBuildFile; fileRef = 30BA21171C957E3100DC883C /* Blobfish.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -42,10 +42,9 @@
 		30BA211E1C957E3100DC883C /* BlobfishTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlobfishTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		30BA21231C957E3100DC883C /* BlobfishTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlobfishTests.swift; sourceTree = "<group>"; };
 		30BA21251C957E3100DC883C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		30BA212F1C957F1500DC883C /* ErrorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorHelper.swift; sourceTree = "<group>"; };
+		30BA212F1C957F1500DC883C /* Blobfish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blobfish.swift; sourceTree = "<group>"; };
 		30BA21301C957F1500DC883C /* ErrorRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorRepresentable.swift; sourceTree = "<group>"; };
 		30BA21311C957F1500DC883C /* MessageBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBar.swift; sourceTree = "<group>"; };
-		30BA21321C957F1500DC883C /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		30BA21331C957F1500DC883C /* SerializableErrorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SerializableErrorExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,10 +110,9 @@
 		30BA212E1C957F1500DC883C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				30BA212F1C957F1500DC883C /* ErrorHelper.swift */,
+				30BA212F1C957F1500DC883C /* Blobfish.swift */,
 				30BA21301C957F1500DC883C /* ErrorRepresentable.swift */,
 				30BA21311C957F1500DC883C /* MessageBar.swift */,
-				30BA21321C957F1500DC883C /* Reachability.swift */,
 				30BA21331C957F1500DC883C /* SerializableErrorExtension.swift */,
 				30925AFA1C9589B800895BE6 /* Error.swift */,
 			);
@@ -244,7 +242,7 @@
 			files = (
 				30BA21391C957F7E00DC883C /* MessageBar.swift in Sources */,
 				30925AF81C95892E00895BE6 /* ErrorRepresentable.swift in Sources */,
-				307ED5341C98AEE7002B7B74 /* ErrorHelper.swift in Sources */,
+				307ED5341C98AEE7002B7B74 /* Blobfish.swift in Sources */,
 				30925AFB1C9589B800895BE6 /* Error.swift in Sources */,
 				30CC1B1F1C95858900DB923F /* SerializableErrorExtension.swift in Sources */,
 			);

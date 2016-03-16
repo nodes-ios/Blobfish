@@ -12,10 +12,11 @@ import Serializable
 public enum APIError: Int {
     case Zero                   = 0
     case NoConnection           = 4096
-    case NotConnectedToInternet = 1009
-    case NetworkConnectionLost  = 1005
+    case NotConnectedToInternet = -1009
+    case NetworkConnectionLost  = -1005
     case ParsingFailed          = 2048
-    case ClientTimeOut          = 1001
+    case ClientTimeOut          = -1001
+    case BadRequest             = 400
     case Unauthorized           = 401
     case Forbidden              = 403
     case NotFound               = 404
@@ -34,24 +35,27 @@ public enum APIError: Int {
 
 extension Parser.Error: ErrorRepresentable {
     public func blobfishError() -> Error {
-        let code = APIError(rawValue: response?.statusCode ?? 0) ?? .UnknownError
-        switch (code) {
+        
+        let errorCode   = error?.code
+        let statusCode  = response?.statusCode ?? errorCode
+        let apiError    = APIError(rawValue: statusCode ?? 0) ?? .UnknownError
+        switch (apiError) {
             
         case .Unauthorized, .Forbidden, .NoToken, .InvalidToken, .BlockedUser:
             let message = self.dynamicType.messageForTokenExpiredError()
             return Error.Token(message: message.message, okButtonText: message.ok)
             
         case .NoConnection, .Zero, .ClientTimeOut, .NotConnectedToInternet, .NetworkConnectionLost, .Invalid3rdPartyToken:
-            let alert = self.dynamicType.messageForConnectionError(code: code.rawValue)
+            let alert = self.dynamicType.messageForConnectionError(code: statusCode ?? 0)
             return Error.Connection(message: alert.message, style:alert.style)
         
         default:
             var localizedMessageForStatusCode:String = ""
-            if let statusCode = response?.statusCode {
+            if let statusCode = statusCode {
                localizedMessageForStatusCode = NSHTTPURLResponse.localizedStringForStatusCode(statusCode)
             }
             
-            let alert = self.dynamicType.messageForUnknownError(code: code.rawValue, localizedStringForCode: localizedMessageForStatusCode)
+            let alert = self.dynamicType.messageForUnknownError(code: statusCode ?? abs(errorCode) ?? -1, localizedStringForCode: localizedMessageForStatusCode)
             return Error.Unknown(message: alert.message,
                                  okButtonText: alert.buttonText)
         }
