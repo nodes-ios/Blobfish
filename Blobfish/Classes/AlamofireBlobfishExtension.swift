@@ -90,6 +90,7 @@ public struct AlamofireResponseConfiguration {
      **Example:** You api returns *441* whenever you try to make a call with an expired token.
      You want to tell the user and log him out, so you return [441 : ErrorType.Token].
      
+     Both HTTP response codes and NSError codes can be specified.
      
      - note: Error codes unique for specific endpoints should be handled BEFORE passing
      the response to Blobfish.
@@ -103,6 +104,18 @@ public struct AlamofireResponseConfiguration {
 }
 
 extension Alamofire.Response: Blobable {
+    
+    /**
+     This Blobfish extension allows you to pass a Response object to Blobfish. 
+     It splits the response up in 4 different types:
+     
+     - *Connection* - shown as overlay
+     - *Unknown* - shown as Alert.
+     - *Token invalid/expired* - shown as alert.
+     - *None* - show nothing
+     
+     Please add the appropriate strings and actions to the AlamofireResponseConfiguration object.
+     */
     
     public var blob:Blob? {
         
@@ -131,11 +144,7 @@ extension Alamofire.Response: Blobable {
     }
     
     /**
-     A overall classification of the response (and error), assigning it to 1 of 3 types:
-     Token
-     Connection
-     Error
-     
+     A overall classification of the response (and error), assigning it to an *ErrorType* case.
      
      - returns: The type of error
      */

@@ -8,6 +8,11 @@
 
 import Foundation
 
+/**
+ If a class or struct conforms to *Blobable*, it can return a *Blob* and thus 
+ be used by Blobfish to display an error message.
+ */
+
 public protocol Blobable {
     var blob:Blob? { get }
 }

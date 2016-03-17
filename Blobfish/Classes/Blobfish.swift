@@ -9,6 +9,10 @@
 import UIKit
 import Reachability
 
+/**
+ Blobfish can present general error messages related to URL Requests in a meaningful way. Pass an object conforming to 
+ the *Blobable* protocol to it whenever you have a request that fails with a non-endpoint-specific error.
+ */
 
 public class Blobfish {
     
@@ -143,7 +147,7 @@ public class Blobfish {
         }
     }
     
-    private func hideOverlayBar(animated:Bool = true) {
+    public func hideOverlayBar(animated:Bool = true) {
 
         if !animated  || overlayBar.hidden == true {
             self.overlayBar.hidden = true
@@ -198,16 +202,12 @@ public class Blobfish {
     }
     
     
-    // MARK: - Response Error Handling
+    // MARK: - Blob handling
     
     /**
-     Evaluates the given response and runs the appropriate error block.
+     Takes a *Blobable* object and displays an error message according to the *blob* returned by the object.
      
-     - parameter response:               The API Response to evaluate
-     
-     - parameter connectionErrorHandler: (Optional.) This gets passed to the connection error block. Is called on connection error in the default block. Return **true** to show an alert, return **false** to suppress the alert. If you suppress the alert, you are responsible for presenting UI to the user yourself.
-     
-     - parameter retryHandler:           (Optional.) This gets passed to the connection error block. If **non-nil** in the default block, connection error alert will show a retry button, triggering this closure. Does nothing if *connectionErrorHandler* returns **false**.
+     - parameter blobable:               An instance conforming to *Blobable*
      */
     
     public func handle(blobable:Blobable) {
