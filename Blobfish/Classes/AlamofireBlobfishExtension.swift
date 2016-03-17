@@ -50,7 +50,7 @@ public struct AlamofireBlobfishConfiguration {
     
     
     public static var blobForConnectionError:(code:Int) -> Blob = { code in
-        print("Warning! Please assign values to all 'messageFor***' static properties on Serializable.Parser.Error.. Using default values...")
+        print("Warning! Please assign values to all 'messageFor***' static properties on AlamofireBlobfishConfiguration.. Using default values...")
         var title = "_Something went wrong. Please check your connection and try again"
         
         return Blob(title:title, style: .Overlay)
@@ -64,7 +64,7 @@ public struct AlamofireBlobfishConfiguration {
     
     
     public static var blobForUnknownError:(code:Int, localizedStringForCode:String) -> Blob = { (code, localizedStringForCode) in
-        print("Warning! Please assign values to all 'messageFor***' static properties on Serializable.Parser.Error.. Using default values...")
+        print("Warning! Please assign values to all 'messageFor***' static properties on AlamofireBlobfishConfiguration.. Using default values...")
         let title = "_An error occured"
         let action = Blob.AlertAction(title: "OK", handler: nil)
         return Blob(title: title, style: .Alert(message:"(\(code) " + localizedStringForCode + ")", actions: [action]))
@@ -79,7 +79,11 @@ public struct AlamofireBlobfishConfiguration {
     
     public static var blobForTokenExpired:() -> Blob = {
         var title = "_You session has expired. Please log in again"
-        fatalError("errorForTokenExpired is not set on Serializable.Parser.Error extension")
+        fatalError("errorForTokenExpired is not set on AlamofireBlobfishConfiguration extension")
+    }
+    
+    public static var customStatusCodeMapping:() -> [Int : ErrorType] = {
+        return [:]
     }
 }
 
@@ -124,13 +128,18 @@ extension Alamofire.Response: Blobable {
     public var errorType:ErrorType {
         
         guard case let .Failure(resultError) = result else { return .None }
-
+        
         let errorCode   = (resultError as NSError).code
         let statusCode  = response?.statusCode ?? errorCode
+        
+        if let customMapping = AlamofireBlobfishConfiguration.customStatusCodeMapping()[statusCode] {
+            return customMapping
+        }
+        
         let apiError    = ErrorCode(rawValue: statusCode ?? 0) ?? .UnknownError
         switch (apiError) {
             
-        case .Unauthorized, .Forbidden, .NoToken, .InvalidToken, .BlockedUser:
+        case .Unauthorized, .Forbidden:
             return .Token
             
         case .NoConnection, .Zero, .ClientTimeOut, .NotConnectedToInternet, .NetworkConnectionLost, .Invalid3rdPartyToken:
