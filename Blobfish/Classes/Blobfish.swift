@@ -210,8 +210,8 @@ public class Blobfish {
      - parameter retryHandler:           (Optional.) This gets passed to the connection error block. If **non-nil** in the default block, connection error alert will show a retry button, triggering this closure. Does nothing if *connectionErrorHandler* returns **false**.
      */
     
-    public func handleError(error:Blobable) {
-        guard let blob = error.blob else { return }
+    public func handle(blobable:Blobable) {
+        guard let blob = blobable.blob else { return }
         
         switch (blob.style) {
         case .Overlay:

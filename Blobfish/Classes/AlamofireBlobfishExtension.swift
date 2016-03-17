@@ -40,7 +40,9 @@ public enum ErrorType {
     case None
 }
 
-public struct AlamofireBlobfishConfiguration {
+//This abomination exists because you cannot extend a generic class with static variables yet
+
+public struct AlamofireResponseConfiguration {
     
     /**
      Gets the message and titles useful for showing in connection error alert view.
