@@ -81,7 +81,7 @@ public struct AlamofireResponseConfiguration {
     
     public static var blobForTokenExpired:() -> Blob = {
         var title = "_You session has expired. Please log in again"
-        fatalError("errorForTokenExpired is not set on AlamofireBlobfishConfiguration extension")
+        fatalError("errorForTokenExpired is not set on AlamofireBlobfishConfiguration")
     }
     
     public static var customStatusCodeMapping:() -> [Int : ErrorType] = {
