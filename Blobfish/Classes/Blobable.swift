@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol Blobable {
-    var blob:Blob { get }
+    var blob:Blob? { get }
 }

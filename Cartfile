@@ -1,2 +1,2 @@
 github "ashleymills/Reachability.swift"
-github "nodes-ios/Serializable" " Alamofire-Additions"
+github "Alamofire/Alamofire" ~> 3.0

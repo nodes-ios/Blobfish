@@ -211,12 +211,14 @@ public class Blobfish {
      */
     
     public func handleError(error:Blobable) {
-        switch (error.blob.style) {
+        guard let blob = error.blob else { return }
+        
+        switch (blob.style) {
         case .Overlay:
-            showOverlayBlock(title: error.blob.title)
+            showOverlayBlock(title: blob.title)
             
         case let .Alert(message, actions):
-            showAlertBlock(title: error.blob.title, message: message, actions: actions)
+            showAlertBlock(title: blob.title, message: message, actions: actions)
         }
     }
     
