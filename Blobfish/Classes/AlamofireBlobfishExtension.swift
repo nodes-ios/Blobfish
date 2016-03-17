@@ -84,6 +84,19 @@ public struct AlamofireResponseConfiguration {
         fatalError("errorForTokenExpired is not set on AlamofireBlobfishConfiguration")
     }
     
+    /**
+     This is used if the API you're consuming has set up global error codes. 
+     
+     **Example:** You api returns *441* whenever you try to make a call with an expired token.
+     You want to tell the user and log him out, so you return [441 : ErrorType.Token].
+     
+     
+     - note: Error codes unique for specific endpoints should be handled BEFORE passing
+     the response to Blobfish.
+     
+     - returns: A dictionary whose keys are error codes and values are ErrorTypes.
+     */
+    
     public static var customStatusCodeMapping:() -> [Int : ErrorType] = {
         return [:]
     }
@@ -104,16 +117,16 @@ extension Alamofire.Response: Blobable {
             return nil
             
         case .Token:
-            return AlamofireBlobfishConfiguration.blobForTokenExpired()
+            return AlamofireResponseConfiguration.blobForTokenExpired()
             
         case .Connection:
-            return AlamofireBlobfishConfiguration.blobForConnectionError(code: statusCode ?? 0)
+            return AlamofireResponseConfiguration.blobForConnectionError(code: statusCode ?? 0)
             
         default:
             var localizedMessageForStatusCode:String = ""
             localizedMessageForStatusCode = NSHTTPURLResponse.localizedStringForStatusCode(statusCode)
             
-            return AlamofireBlobfishConfiguration.blobForUnknownError(code: statusCode ?? (errorCode ?? -1), localizedStringForCode: localizedMessageForStatusCode)
+            return AlamofireResponseConfiguration.blobForUnknownError(code: statusCode ?? (errorCode ?? -1), localizedStringForCode: localizedMessageForStatusCode)
         }
     }
     
@@ -134,7 +147,7 @@ extension Alamofire.Response: Blobable {
         let errorCode   = (resultError as NSError).code
         let statusCode  = response?.statusCode ?? errorCode
         
-        if let customMapping = AlamofireBlobfishConfiguration.customStatusCodeMapping()[statusCode] {
+        if let customMapping = AlamofireResponseConfiguration.customStatusCodeMapping()[statusCode] {
             return customMapping
         }
         
