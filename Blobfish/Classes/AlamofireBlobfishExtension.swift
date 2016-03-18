@@ -33,16 +33,16 @@ private enum ErrorCode: Int {
     case UnknownError           = -1
 }
 
-public enum ErrorType {
-    case Connection
-    case Token
-    case Unknown
-    case None
-}
-
 //This abomination exists because you cannot extend a generic class with static variables yet
 
 public struct AlamofireResponseConfiguration {
+    
+    public enum ErrorType {
+        case Connection
+        case Token
+        case Unknown
+        case None
+    }
     
     /**
      Gets the message and titles useful for showing in connection error alert view.
