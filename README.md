@@ -1,4 +1,6 @@
-<div style="text-align:center"><img src ="./Blobfish_icon.png" /></div>
+<p align="center">
+  <img src="./Blobfish_icon.png?raw=true" alt="Blobfish"/>
+</p>
 
 ####Easily handle errors and present them to the user in a nice way.
 
