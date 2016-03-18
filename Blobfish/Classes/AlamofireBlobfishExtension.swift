@@ -149,7 +149,7 @@ extension Alamofire.Response: Blobable {
      - returns: The type of error
      */
     
-    public var errorType:ErrorType {
+    public var errorType:AlamofireResponseConfiguration.ErrorType {
         
         guard case let .Failure(resultError) = result else { return .None }
         
