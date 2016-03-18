@@ -34,72 +34,74 @@ private enum ErrorCode: Int {
 }
 
 //This abomination exists because you cannot extend a generic class with static variables yet
-
-public struct AlamofireResponseConfiguration {
+extension Blobfish {
     
-    public enum ErrorCategory {
-        case Connection
-        case Token
-        case Unknown
-        case None
-    }
-    
-    /**
-     Gets the message and titles useful for showing in connection error alert view.
-     
-     - returns: A tuple containing message text and alert style. For .Alert style, please pass along text string for 'OK' and optionally 'Retry'. If retry string is nil, alert will only show OK button.
-     */
-    
-    
-    public static var blobForConnectionError:(code:Int) -> Blob = { code in
-        print("Warning! Please assign values to all 'messageFor***' static properties on AlamofireBlobfishConfiguration.. Using default values...")
-        var title = "_Something went wrong. Please check your connection and try again"
+    public struct AlamofireConfig {
         
-        return Blob(title:title, style: .Overlay)
-    }
-    
-    /**
-     Gets the message and titles for showing unkown error alert view.
-     
-     - returns: A tuple containing message text and ok text.
-     */
-    
-    
-    public static var blobForUnknownError:(code:Int, localizedStringForCode:String) -> Blob = { (code, localizedStringForCode) in
-        print("Warning! Please assign values to all 'messageFor***' static properties on AlamofireBlobfishConfiguration.. Using default values...")
-        let title = "_An error occured"
-        let action = Blob.AlertAction(title: "OK", handler: nil)
-        return Blob(title: title, style: .Alert(message:"(\(code) " + localizedStringForCode + ")", actions: [action]))
-    }
-    
-    /**
-     Gets the message and titles for showing token expired/missing error alert view.
-     
-     - returns: A tuple containing message text and ok text.
-     */
-    
-    
-    public static var blobForTokenExpired:() -> Blob = {
-        var title = "_You session has expired. Please log in again"
-        fatalError("errorForTokenExpired is not set on AlamofireBlobfishConfiguration")
-    }
-    
-    /**
-     This is used if the API you're consuming has set up global error codes. 
-     
-     **Example:** You api returns *441* whenever you try to make a call with an expired token.
-     You want to tell the user and log him out, so you return [441 : ErrorCategory.Token].
-     
-     Both HTTP response codes and NSError codes can be specified.
-     
-     - note: Error codes unique for specific endpoints should be handled BEFORE passing
-     the response to Blobfish.
-     
-     - returns: A dictionary whose keys are error codes and values are ErrorCategories.
-     */
-    
-    public static var customStatusCodeMapping:() -> [Int : ErrorCategory] = {
-        return [:]
+        /**
+         Gets the message and titles useful for showing in connection error alert view.
+         
+         - returns: A tuple containing message text and alert style. For .Alert style, please pass along text string for 'OK' and optionally 'Retry'. If retry string is nil, alert will only show OK button.
+         */
+        
+        
+        public static var blobForConnectionError:(code:Int) -> Blob = { code in
+            print("Warning! Please assign values to all 'messageFor***' static properties on AlamofireBlobfishConfiguration.. Using default values...")
+            var title = "_Something went wrong. Please check your connection and try again"
+            
+            return Blob(title:title, style: .Overlay)
+        }
+        
+        /**
+         Gets the message and titles for showing unkown error alert view.
+         
+         - returns: A tuple containing message text and ok text.
+         */
+        
+        
+        public static var blobForUnknownError:(code:Int, localizedStringForCode:String) -> Blob = { (code, localizedStringForCode) in
+            print("Warning! Please assign values to all 'messageFor***' static properties on AlamofireBlobfishConfiguration.. Using default values...")
+            let title = "_An error occured"
+            let action = Blob.AlertAction(title: "OK", handler: nil)
+            return Blob(title: title, style: .Alert(message:"(\(code) " + localizedStringForCode + ")", actions: [action]))
+        }
+        
+        /**
+         Gets the message and titles for showing token expired/missing error alert view.
+         
+         - returns: A tuple containing message text and ok text.
+         */
+        
+        
+        public static var blobForTokenExpired:() -> Blob = {
+            var title = "_You session has expired. Please log in again"
+            fatalError("errorForTokenExpired is not set on AlamofireBlobfishConfiguration")
+        }
+        
+        /**
+         This is used if the API you're consuming has set up global error codes.
+         
+         **Example:** You api returns *441* whenever you try to make a call with an expired token.
+         You want to tell the user and log him out, so you return [441 : ErrorCategory.Token].
+         
+         Both HTTP response codes and NSError codes can be specified.
+         
+         - note: Error codes unique for specific endpoints should be handled BEFORE passing
+         the response to Blobfish.
+         
+         - returns: A dictionary whose keys are error codes and values are ErrorCategories.
+         */
+        
+        public static var customStatusCodeMapping:() -> [Int : ErrorCategory] = {
+            return [:]
+        }
+        
+        public enum ErrorCategory {
+            case Connection
+            case Token
+            case Unknown
+            case None
+        }
     }
 }
 
@@ -130,16 +132,16 @@ extension Alamofire.Response: Blobable {
             return nil
             
         case .Token:
-            return AlamofireResponseConfiguration.blobForTokenExpired()
+            return Blobfish.AlamofireConfig.blobForTokenExpired()
             
         case .Connection:
-            return AlamofireResponseConfiguration.blobForConnectionError(code: statusCode ?? 0)
+            return Blobfish.AlamofireConfig.blobForConnectionError(code: statusCode ?? 0)
             
         default:
             var localizedMessageForStatusCode:String = ""
             localizedMessageForStatusCode = NSHTTPURLResponse.localizedStringForStatusCode(statusCode)
             
-            return AlamofireResponseConfiguration.blobForUnknownError(code: statusCode ?? (errorCode ?? -1), localizedStringForCode: localizedMessageForStatusCode)
+            return Blobfish.AlamofireConfig.blobForUnknownError(code: statusCode ?? (errorCode ?? -1), localizedStringForCode: localizedMessageForStatusCode)
         }
     }
     
@@ -149,14 +151,14 @@ extension Alamofire.Response: Blobable {
      - returns: The type of error
      */
     
-    public var errorCategory:AlamofireResponseConfiguration.ErrorCategory {
+    public var errorCategory:Blobfish.AlamofireConfig.ErrorCategory {
         
         guard case let .Failure(resultError) = result else { return .None }
         
         let errorCode   = (resultError as NSError).code
         let statusCode  = response?.statusCode ?? errorCode
         
-        if let customMapping = AlamofireResponseConfiguration.customStatusCodeMapping()[statusCode] {
+        if let customMapping = Blobfish.AlamofireConfig.customStatusCodeMapping()[statusCode] {
             return customMapping
         }
         
