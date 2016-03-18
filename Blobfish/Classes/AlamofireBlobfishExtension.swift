@@ -37,7 +37,7 @@ private enum ErrorCode: Int {
 
 public struct AlamofireResponseConfiguration {
     
-    public enum ErrorType {
+    public enum ErrorCategory {
         case Connection
         case Token
         case Unknown
@@ -88,17 +88,17 @@ public struct AlamofireResponseConfiguration {
      This is used if the API you're consuming has set up global error codes. 
      
      **Example:** You api returns *441* whenever you try to make a call with an expired token.
-     You want to tell the user and log him out, so you return [441 : ErrorType.Token].
+     You want to tell the user and log him out, so you return [441 : ErrorCategory.Token].
      
      Both HTTP response codes and NSError codes can be specified.
      
      - note: Error codes unique for specific endpoints should be handled BEFORE passing
      the response to Blobfish.
      
-     - returns: A dictionary whose keys are error codes and values are ErrorTypes.
+     - returns: A dictionary whose keys are error codes and values are ErrorCategories.
      */
     
-    public static var customStatusCodeMapping:() -> [Int : ErrorType] = {
+    public static var customStatusCodeMapping:() -> [Int : ErrorCategory] = {
         return [:]
     }
 }
@@ -124,7 +124,7 @@ extension Alamofire.Response: Blobable {
         let errorCode   = (resultError as NSError).code
         let statusCode  = response?.statusCode ?? errorCode
         
-        switch (self.errorType) {
+        switch (self.errorCategory) {
            
         case .None:
             return nil
@@ -144,12 +144,12 @@ extension Alamofire.Response: Blobable {
     }
     
     /**
-     A overall classification of the response (and error), assigning it to an *ErrorType* case.
+     A overall classification of the response (and error), assigning it to an *ErrorCategory* case.
      
      - returns: The type of error
      */
     
-    public var errorType:AlamofireResponseConfiguration.ErrorType {
+    public var errorCategory:AlamofireResponseConfiguration.ErrorCategory {
         
         guard case let .Failure(resultError) = result else { return .None }
         

@@ -47,18 +47,6 @@ public class Blobfish {
             }
         }
         
-        reachability?.whenUnreachable = { reachability in
-            /*
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                Blobfish.sharedInstance.overlayBar.label.text = self.messageForConnectionError().message
-                if let configurationClosure = Blobfish.sharedInstance.overlayBarConfiguration {
-                    configurationClosure(type: ErrorType.Connection, bar: Blobfish.sharedInstance.overlayBar)
-                }
-                self.showOverlayBar()
-            })
- */
-        }
-        
         do {
             try reachability?.startNotifier()
         } catch {
