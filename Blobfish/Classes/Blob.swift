@@ -19,12 +19,12 @@ public struct Blob {
     /**
      The displayed title. if *style* is *.Overlay*, this will be all the user sees.
      */
-    let title: String
+    public let title: String
     
     /**
      The display style of the overlay.
      */
-    let style: Style
+    public let style: Style
     
     /**
     The default implementation of Blobfish shows a
