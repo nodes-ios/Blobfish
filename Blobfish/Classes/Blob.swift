@@ -27,20 +27,21 @@ public struct Blob {
     public let style: Style
     
     /**
-    The default implementation of Blobfish shows a
-    status bare overlay for *.Overlay* and a native *UIAlertController* alert for the *.Alert* case.
+     The default implementation of Blobfish shows a status bar overlay for *.Overlay*
+     and a native *UIAlertController* alert for the *.Alert* case.
     */
     public enum Style {
         case Overlay
         case Alert(message:String?, actions: [AlertAction])
     }
-    
-    /**
-     The default implementation of Blobfish shows a
-     status bare overlay for *.Overlay* and a native *UIAlertController* alert for the *.Alert* case.
-     */
+
     public struct AlertAction {
         public let title: String
         public let handler:(()->Void)?
+    }
+
+    public init(title: String, style: Style) {
+        self.title = title
+        self.style = style
     }
 }
