@@ -36,8 +36,15 @@ public struct Blob {
     }
 
     public struct AlertAction {
+        public typealias Handler = (() -> Void)
+
         public let title: String
-        public let handler:(()->Void)?
+        public let handler: Handler?
+
+        public init(title: String, handler: Handler?) {
+            self.title   = title
+            self.handler = handler
+        }
     }
 
     public init(title: String, style: Style) {
