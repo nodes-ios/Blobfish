@@ -11,7 +11,7 @@ import Reachability
 
 /**
  Blobfish can present general error messages related to URL Requests in a meaningful way. Pass an object conforming to 
- the *Blobable* protocol to it whenever you have a request that fails with a non-endpoint-specific error.
+ the *Blobable* protocol to it whenever you  have a request that fails with a non-endpoint-specific error.
  */
 
 public class Blobfish {
@@ -54,7 +54,7 @@ public class Blobfish {
         }
         
         dispatch_once(&Blobfish.dispatchOnceToken) {
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(Blobfish.aCallWentThrough(_:)), name: "APICallSucceededNotification", object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("aCallWentThrough:"), name: "APICallSucceededNotification", object: nil)
         }
     }
     
