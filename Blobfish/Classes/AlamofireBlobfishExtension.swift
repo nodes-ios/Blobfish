@@ -30,6 +30,10 @@ private enum ErrorCode: Int {
     case EntityNotFound         = 445
     case BlockedUser            = 447
     case InternalServerError    = 500
+    case NotImplemented         = 501
+    case BadGateway             = 502
+    case ServiceUnavailable     = 503
+    case GatewayTimeout         = 504
     case UnknownError           = -1
 }
 

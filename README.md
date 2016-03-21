@@ -45,7 +45,7 @@ Blobfish.AlamofireConfig.blobForConnectionError = { _ in
 }
 ```
 
-There is an extension to Alamofire `Response` to make it adhere to the `Blobbable` protocol, so handling errors in your callbacks should is a breeze.
+There is an extension to Alamofire `Response` to make it adhere to the `Blobbable` protocol, so handling errors in your callbacks should be a breeze.
 
 ```swift
 func doSomeRequest(completion: Response<AnyObject, NSError> -> Void) { ... }
