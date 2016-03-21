@@ -2,7 +2,7 @@
   <img src="./Blobfish_icon.png?raw=true" alt="Blobfish"/>
 </p>
 
-####Easily handle errors and present them to the user in a nice way.
+Easily handle errors and present them to the user in a nice way.
 
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ![Plaform](https://img.shields.io/badge/platform-iOS-lightgrey.svg)

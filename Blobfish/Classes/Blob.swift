@@ -19,28 +19,36 @@ public struct Blob {
     /**
      The displayed title. if *style* is *.Overlay*, this will be all the user sees.
      */
-    let title: String
+    public let title: String
     
     /**
      The display style of the overlay.
      */
-    let style: Style
+    public let style: Style
     
     /**
-    The default implementation of Blobfish shows a
-    status bare overlay for *.Overlay* and a native *UIAlertController* alert for the *.Alert* case.
+     The default implementation of Blobfish shows a status bar overlay for *.Overlay*
+     and a native *UIAlertController* alert for the *.Alert* case.
     */
     public enum Style {
         case Overlay
         case Alert(message:String?, actions: [AlertAction])
     }
-    
-    /**
-     The default implementation of Blobfish shows a
-     status bare overlay for *.Overlay* and a native *UIAlertController* alert for the *.Alert* case.
-     */
+
     public struct AlertAction {
+        public typealias Handler = (() -> Void)
+
         public let title: String
-        public let handler:(()->Void)?
+        public let handler: Handler?
+
+        public init(title: String, handler: Handler?) {
+            self.title   = title
+            self.handler = handler
+        }
+    }
+
+    public init(title: String, style: Style) {
+        self.title = title
+        self.style = style
     }
 }
