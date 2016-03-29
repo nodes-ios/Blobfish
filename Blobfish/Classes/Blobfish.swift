@@ -54,7 +54,7 @@ public class Blobfish {
         }
         
         dispatch_once(&Blobfish.dispatchOnceToken) {
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("aCallWentThrough:"), name: "APICallSucceededNotification", object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(Blobfish.aCallWentThrough(_:)), name: "APICallSucceededNotification", object: nil)
         }
     }
     
