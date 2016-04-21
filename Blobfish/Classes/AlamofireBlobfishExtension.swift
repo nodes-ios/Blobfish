@@ -49,7 +49,7 @@ extension Blobfish {
          */
         
         
-        public static var blobForConnectionError:(code:Int) -> Blob = { code in
+        public static var blobForConnectionError:(code:Int) -> Blob? = { code in
             print("Warning! Please assign values to all 'messageFor***' static properties on AlamofireBlobfishConfiguration.. Using default values...")
             var title = "_Something went wrong. Please check your connection and try again"
             
@@ -63,7 +63,7 @@ extension Blobfish {
          */
         
         
-        public static var blobForUnknownError:(code:Int, localizedStringForCode:String) -> Blob = { (code, localizedStringForCode) in
+        public static var blobForUnknownError:(code:Int, localizedStringForCode:String) -> Blob? = { (code, localizedStringForCode) in
             print("Warning! Please assign values to all 'messageFor***' static properties on AlamofireBlobfishConfiguration.. Using default values...")
             let title = "_An error occured"
             let action = Blob.AlertAction(title: "OK", handler: nil)
@@ -77,7 +77,7 @@ extension Blobfish {
          */
         
         
-        public static var blobForTokenExpired:() -> Blob = {
+        public static var blobForTokenExpired:() -> Blob? = {
             var title = "_You session has expired. Please log in again"
             fatalError("errorForTokenExpired is not set on AlamofireBlobfishConfiguration")
         }
