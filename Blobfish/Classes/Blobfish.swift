@@ -80,15 +80,29 @@ public class Blobfish {
             }))
         }
         
+        Blobfish.sharedInstance.presentViewController(alert)
+        
+    }
+    
+    /**
+    This method can be used for presenting a custom viewcontroller while still using the Blobfish boilerplate code for keeping track of already presented alerts. IMPORTANT: If this method is used you must call Blobfish.hideAlertWindow() somewhere in every alert action to regain interaction with app
+    */
+    
+    public func presentViewController(viewController:UIViewController) {
+        
         if Blobfish.sharedInstance.alertWindow.rootViewController == nil {
             Blobfish.sharedInstance.alertWindow.rootViewController = UIViewController()
         }
         
         Blobfish.sharedInstance.alertWindow.makeKeyAndVisible()
-        Blobfish.sharedInstance.alertWindow.rootViewController!.presentViewController(alert, animated: true, completion: nil)
+        Blobfish.sharedInstance.alertWindow.rootViewController!.presentViewController(viewController, animated: true, completion: nil)
     }
     
-    private static func hideAlertWindow() {
+    /**
+     This method is used for manually hiding the window used for displaying alerts. MUST be called after dismissing a custom viewcontroller presented with Blobfish.sharedInstance.presentViewController(viewController:UIViewController)
+     */
+    
+    public static func hideAlertWindow() {
         Blobfish.sharedInstance.alertWindow.hidden = true
     }
     
