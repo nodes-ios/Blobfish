@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		300F43CE1C95875500170B26 /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 300F43CA1C95875500170B26 /* Reachability.framework */; };
-		300F43CF1C95875500170B26 /* Reachability.framework.dSYM in Resources */ = {isa = PBXBuildFile; fileRef = 300F43CB1C95875500170B26 /* Reachability.framework.dSYM */; };
 		307ED5341C98AEE7002B7B74 /* Blobfish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA212F1C957F1500DC883C /* Blobfish.swift */; };
 		30925AF81C95892E00895BE6 /* Blobable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA21301C957F1500DC883C /* Blobable.swift */; };
 		30925AFB1C9589B800895BE6 /* Blob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30925AFA1C9589B800895BE6 /* Blob.swift */; };
@@ -30,7 +29,6 @@
 
 /* Begin PBXFileReference section */
 		300F43CA1C95875500170B26 /* Reachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reachability.framework; path = Carthage/Build/iOS/Reachability.framework; sourceTree = "<group>"; };
-		300F43CB1C95875500170B26 /* Reachability.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = Reachability.framework.dSYM; path = Carthage/Build/iOS/Reachability.framework.dSYM; sourceTree = "<group>"; };
 		30925AFA1C9589B800895BE6 /* Blob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blob.swift; sourceTree = "<group>"; };
 		30BA21141C957E3100DC883C /* Blobfish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Blobfish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30BA21171C957E3100DC883C /* Blobfish.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Blobfish.h; sourceTree = "<group>"; };
@@ -118,7 +116,6 @@
 			isa = PBXGroup;
 			children = (
 				300F43CA1C95875500170B26 /* Reachability.framework */,
-				300F43CB1C95875500170B26 /* Reachability.framework.dSYM */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -214,7 +211,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				300F43CF1C95875500170B26 /* Reachability.framework.dSYM in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
