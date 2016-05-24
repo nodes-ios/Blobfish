@@ -1,5 +1,5 @@
 //
-//  Policeman.swift
+//  Blobfish.swift
 //  NOCore
 //
 //  Created by Chris Combs/Kasper Welner on 27/07/15.
@@ -11,7 +11,7 @@ import Reachability
 
 /**
  Blobfish can present general error messages related to URL Requests in a meaningful way. Pass an object conforming to 
- the *Blobable* protocol to it whenever you  have a request that fails with a non-endpoint-specific error.
+ the *Blobable* protocol to it whenever you have a request that fails with a non-endpoint-specific error.
  */
 
 public class Blobfish {

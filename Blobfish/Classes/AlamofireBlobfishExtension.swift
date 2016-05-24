@@ -82,22 +82,50 @@ extension Blobfish {
             fatalError("errorForTokenExpired is not set on AlamofireBlobfishConfiguration")
         }
         
+//        /**
+//         This is used if the API you're consuming has set up global error codes.
+//         
+//         **Example:** You api returns *441* whenever you try to make a call with an expired token.
+//         You want to tell the user and log him out, so you return [441 : ErrorCategory.Token].
+//         
+//         Both HTTP response codes and NSError codes can be specified.
+//         
+//         - note: Error codes unique for specific endpoints should be handled BEFORE passing
+//         the response to Blobfish.
+//         
+//         - returns: A dictionary whose keys are error codes and values are ErrorCategories.
+//         */
+//        
+//        public static var customStatusCodeMapping:() -> [Int : ErrorCategory] = {
+//            return [:]
+//        }
+        
         /**
-         This is used if the API you're consuming has set up global error codes.
+         A overall classification of the response (and error), assigning it to an *ErrorCategory* case.
          
-         **Example:** You api returns *441* whenever you try to make a call with an expired token.
-         You want to tell the user and log him out, so you return [441 : ErrorCategory.Token].
-         
-         Both HTTP response codes and NSError codes can be specified.
-         
-         - note: Error codes unique for specific endpoints should be handled BEFORE passing
-         the response to Blobfish.
-         
-         - returns: A dictionary whose keys are error codes and values are ErrorCategories.
+         - returns: The type of error
          */
         
-        public static var customStatusCodeMapping:() -> [Int : ErrorCategory] = {
-            return [:]
+        static public var errorCategoryParser:((response:Response<Any, NSError>) -> ErrorCategory) = { (response) -> ErrorCategory in
+            
+            guard case let .Failure(resultError) = response.result else { return .None }
+            
+            let errorCode   = (resultError as NSError).code
+            let statusCode  = response.response?.statusCode ?? errorCode
+            
+            let apiError    = ErrorCode(rawValue: statusCode ?? 0) ?? .UnknownError
+            switch (apiError) {
+                
+            case .Unauthorized, .Forbidden:
+                return .Token
+                
+            case .NoConnection, .Zero, .ClientTimeOut, .NotConnectedToInternet, .NetworkConnectionLost, .Invalid3rdPartyToken:
+                return .Connection
+                
+            default:
+                return .Unknown
+            }
+            
         }
         
         public enum ErrorCategory {
@@ -107,6 +135,10 @@ extension Blobfish {
             case None
         }
     }
+}
+
+public struct ErrorCategoryParser<ObjectType, ErrorType> {
+    
 }
 
 extension Alamofire.Response: Blobable {
@@ -146,37 +178,6 @@ extension Alamofire.Response: Blobable {
             localizedMessageForStatusCode = NSHTTPURLResponse.localizedStringForStatusCode(statusCode)
             
             return Blobfish.AlamofireConfig.blobForUnknownError(code: statusCode ?? (errorCode ?? -1), localizedStringForCode: localizedMessageForStatusCode)
-        }
-    }
-    
-    /**
-     A overall classification of the response (and error), assigning it to an *ErrorCategory* case.
-     
-     - returns: The type of error
-     */
-    
-    public var errorCategory:Blobfish.AlamofireConfig.ErrorCategory {
-        
-        guard case let .Failure(resultError) = result else { return .None }
-        
-        let errorCode   = (resultError as NSError).code
-        let statusCode  = response?.statusCode ?? errorCode
-        
-        if let customMapping = Blobfish.AlamofireConfig.customStatusCodeMapping()[statusCode] {
-            return customMapping
-        }
-        
-        let apiError    = ErrorCode(rawValue: statusCode ?? 0) ?? .UnknownError
-        switch (apiError) {
-            
-        case .Unauthorized, .Forbidden:
-            return .Token
-            
-        case .NoConnection, .Zero, .ClientTimeOut, .NotConnectedToInternet, .NetworkConnectionLost, .Invalid3rdPartyToken:
-            return .Connection
-            
-        default:
-            return .Unknown
         }
     }
 }
