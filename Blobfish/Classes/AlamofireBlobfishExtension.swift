@@ -10,31 +10,31 @@ import UIKit
 import Alamofire
 
 private enum ErrorCode: Int {
-    case Zero                   = 0
-    case NoConnection           = 4096
-    case NotConnectedToInternet = -1009
-    case NetworkConnectionLost  = -1005
-    case ParsingFailed          = 2048
-    case ClientTimeOut          = -1001
-    case BadRequest             = 400
-    case Unauthorized           = 401
-    case Forbidden              = 403
-    case NotFound               = 404
-    case PreconditionFailed     = 412
-    case TooManyRequests        = 429
-    case NoAcceptHeader         = 440
-    case NoToken                = 441
-    case InvalidToken           = 442
-    case ExpiredToken           = 443
-    case Invalid3rdPartyToken   = 444
-    case EntityNotFound         = 445
-    case BlockedUser            = 447
-    case InternalServerError    = 500
-    case NotImplemented         = 501
-    case BadGateway             = 502
-    case ServiceUnavailable     = 503
-    case GatewayTimeout         = 504
-    case UnknownError           = -1
+    case zero                   = 0
+    case noConnection           = 4096
+    case notConnectedToInternet = -1009
+    case networkConnectionLost  = -1005
+    case parsingFailed          = 2048
+    case clientTimeOut          = -1001
+    case badRequest             = 400
+    case unauthorized           = 401
+    case forbidden              = 403
+    case notFound               = 404
+    case preconditionFailed     = 412
+    case tooManyRequests        = 429
+    case noAcceptHeader         = 440
+    case noToken                = 441
+    case invalidToken           = 442
+    case expiredToken           = 443
+    case invalid3rdPartyToken   = 444
+    case entityNotFound         = 445
+    case blockedUser            = 447
+    case internalServerError    = 500
+    case notImplemented         = 501
+    case badGateway             = 502
+    case serviceUnavailable     = 503
+    case gatewayTimeout         = 504
+    case unknownError           = -1
 }
 
 //This abomination exists because you cannot extend a generic class with static variables yet
@@ -53,7 +53,7 @@ extension Blobfish {
             print("Warning! Please assign values to all 'messageFor***' static properties on AlamofireBlobfishConfiguration.. Using default values...")
             var title = "_Something went wrong. Please check your connection and try again"
             
-            return Blob(title:title, style: .Overlay)
+            return Blob(title:title, style: .overlay)
         }
         
         /**
@@ -67,7 +67,7 @@ extension Blobfish {
             print("Warning! Please assign values to all 'messageFor***' static properties on AlamofireBlobfishConfiguration.. Using default values...")
             let title = "_An error occured"
             let action = Blob.AlertAction(title: "OK", handler: nil)
-            return Blob(title: title, style: .Alert(message:"(\(code) " + localizedStringForCode + ")", actions: [action]))
+            return Blob(title: title, style: .alert(message:"(\(code) " + localizedStringForCode + ")", actions: [action]))
         }
         
         /**
@@ -101,10 +101,10 @@ extension Blobfish {
         }
         
         public enum ErrorCategory {
-            case Connection
-            case Token
-            case Unknown
-            case None
+            case connection
+            case token
+            case unknown
+            case none
         }
     }
 }
@@ -125,25 +125,25 @@ extension Alamofire.Response: Blobable {
     
     public var blob:Blob? {
         
-        guard case let .Failure(resultError) = result else { return nil }
+        guard case let .failure(resultError) = result else { return nil }
         
         let errorCode   = (resultError as NSError).code
         let statusCode  = response?.statusCode ?? errorCode
         
         switch (self.errorCategory) {
            
-        case .None:
+        case .none:
             return nil
             
-        case .Token:
+        case .token:
             return Blobfish.AlamofireConfig.blobForTokenExpired()
             
-        case .Connection:
+        case .connection:
             return Blobfish.AlamofireConfig.blobForConnectionError(code: statusCode ?? 0)
             
         default:
             var localizedMessageForStatusCode:String = ""
-            localizedMessageForStatusCode = NSHTTPURLResponse.localizedStringForStatusCode(statusCode)
+            localizedMessageForStatusCode = HTTPURLResponse.localizedString(forStatusCode: statusCode)
             
             return Blobfish.AlamofireConfig.blobForUnknownError(code: statusCode ?? (errorCode ?? -1), localizedStringForCode: localizedMessageForStatusCode)
         }
@@ -157,7 +157,7 @@ extension Alamofire.Response: Blobable {
     
     public var errorCategory:Blobfish.AlamofireConfig.ErrorCategory {
         
-        guard case let .Failure(resultError) = result else { return .None }
+        guard case let .failure(resultError) = result else { return .none }
         
         let errorCode   = (resultError as NSError).code
         let statusCode  = response?.statusCode ?? errorCode
@@ -166,17 +166,17 @@ extension Alamofire.Response: Blobable {
             return customMapping
         }
         
-        let apiError    = ErrorCode(rawValue: statusCode ?? 0) ?? .UnknownError
+        let apiError    = ErrorCode(rawValue: statusCode ?? 0) ?? .unknownError
         switch (apiError) {
             
-        case .Unauthorized, .Forbidden:
-            return .Token
+        case .unauthorized, .forbidden:
+            return .token
             
-        case .NoConnection, .Zero, .ClientTimeOut, .NotConnectedToInternet, .NetworkConnectionLost, .Invalid3rdPartyToken:
-            return .Connection
+        case .noConnection, .zero, .clientTimeOut, .notConnectedToInternet, .networkConnectionLost, .invalid3rdPartyToken:
+            return .connection
             
         default:
-            return .Unknown
+            return .unknown
         }
     }
 }

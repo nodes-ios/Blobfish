@@ -31,8 +31,8 @@ public struct Blob {
      and a native *UIAlertController* alert for the *.Alert* case.
     */
     public enum Style {
-        case Overlay
-        case Alert(message:String?, actions: [AlertAction])
+        case overlay
+        case alert(message:String?, actions: [AlertAction])
     }
 
     public struct AlertAction {

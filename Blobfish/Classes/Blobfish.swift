@@ -14,9 +14,12 @@ import Reachability
  the *Blobable* protocol to it whenever you  have a request that fails with a non-endpoint-specific error.
  */
 
+
 public class Blobfish {
     
-    private static var dispatchOnceToken: dispatch_once_t = 0
+    private static let once = {
+        NotificationCenter.default().addObserver(Blobfish.sharedInstance, selector: #selector(Blobfish.aCallWentThrough(_:)), name: "APICallSucceededNotification", object: nil)
+    }
     
     private var reachability = try? Reachability.reachabilityForInternetConnection() {
         didSet {
@@ -29,15 +32,35 @@ public class Blobfish {
     
     public static let sharedInstance = Blobfish()
     
-    var alertWindow = UIWindow(frame: UIScreen.mainScreen().bounds) {
+    var alertWindow = UIWindow(frame: UIScreen.main().bounds) {
         didSet {
             alertWindow.windowLevel = UIWindowLevelAlert + 1
         }
     }
     
-    var alreadyShowingAlert:Bool { return (Blobfish.sharedInstance.alertWindow.hidden == false) }
+    var alreadyShowingAlert:Bool { return (Blobfish.sharedInstance.alertWindow.isHidden == false) }
 
     
+    private func reachabilityInitialization() {
+        if reachability?.whenReachable == nil {
+            reachability?.whenReachable = { reachability in
+                DispatchQueue.main.async(execute: { () -> Void in
+                    self.hideOverlayBar()
+                })
+            }
+        }
+        
+        do {
+            try reachability?.startNotifier()
+        } catch {
+            print("Unable to start notifier")
+        }
+        
+        
+      _ = Blobfish.once()
+        
+    }
+    /*
     private func reachabilityInitialization() {
         if reachability?.whenReachable == nil {
             reachability?.whenReachable = { reachability in
@@ -57,8 +80,9 @@ public class Blobfish {
             NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(Blobfish.aCallWentThrough(_:)), name: "APICallSucceededNotification", object: nil)
         }
     }
+    */
     
-    lazy var overlayBar = MessageBar(frame: UIApplication.sharedApplication().statusBarFrame)
+    lazy var overlayBar = MessageBar(frame: UIApplication.shared().statusBarFrame)
     
     
     // MARK: - Error Alert Block
@@ -72,9 +96,9 @@ public class Blobfish {
     public var showAlertBlock: ErrorHandlerShowAlertBlock = {
         (title, message, actions) in
         
-        let alert = UIAlertController(title: title, message:message, preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: title, message:message, preferredStyle: UIAlertControllerStyle.alert)
         for action in actions {
-            alert.addAction(UIAlertAction(title: action.title, style: .Default, handler: { (_) in
+            alert.addAction(UIAlertAction(title: action.title, style: .default, handler: { (_) in
                 Blobfish.hideAlertWindow()
                 action.handler?()
             }))
@@ -88,14 +112,14 @@ public class Blobfish {
     This method can be used for presenting a custom viewcontroller while still using the Blobfish boilerplate code for keeping track of already presented alerts. IMPORTANT: If this method is used you must call Blobfish.hideAlertWindow() somewhere in every alert action to regain interaction with app
     */
     
-    public func presentViewController(viewController:UIViewController) {
+    public func presentViewController(_ viewController:UIViewController) {
         
         if Blobfish.sharedInstance.alertWindow.rootViewController == nil {
             Blobfish.sharedInstance.alertWindow.rootViewController = UIViewController()
         }
         
         Blobfish.sharedInstance.alertWindow.makeKeyAndVisible()
-        Blobfish.sharedInstance.alertWindow.rootViewController!.presentViewController(viewController, animated: true, completion: nil)
+        Blobfish.sharedInstance.alertWindow.rootViewController!.present(viewController, animated: true, completion: nil)
     }
     
     /**
@@ -103,7 +127,7 @@ public class Blobfish {
      */
     
     public static func hideAlertWindow() {
-        Blobfish.sharedInstance.alertWindow.hidden = true
+        Blobfish.sharedInstance.alertWindow.isHidden = true
     }
     
     //MARK: - Message Overlay
@@ -134,14 +158,14 @@ public class Blobfish {
     //MARK: - Private overlay methods
     
     private func showOverlayBar() {
-        if (self.overlayBar.hidden) { // Not already shown
+        if (self.overlayBar.isHidden) { // Not already shown
             // Do not re-animate
             self.overlayBar.frame.origin.y = -overlayBar.frame.height
         }
         
-        self.overlayBar.hidden = false
+        self.overlayBar.isHidden = false
         
-        UIView.animateWithDuration(0.5, animations: { () -> Void in
+        UIView.animate(withDuration: 0.5, animations: { () -> Void in
             self.overlayBar.frame.origin.y = 0
             }) { (finished) -> Void in
                 
@@ -149,43 +173,43 @@ public class Blobfish {
         }
     }
     
-    public func hideOverlayBar(animated:Bool = true) {
+    public func hideOverlayBar(_ animated:Bool = true) {
 
-        if !animated  || overlayBar.hidden == true {
-            self.overlayBar.hidden = true
+        if !animated  || overlayBar.isHidden == true {
+            self.overlayBar.isHidden = true
             return
         }
         
-        self.overlayBar.hidden = false
+        self.overlayBar.isHidden = false
         
-        UIView.animateWithDuration(0.5, delay: 0.0, options: UIViewAnimationOptions.BeginFromCurrentState, animations: { () -> Void in
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIViewAnimationOptions.beginFromCurrentState, animations: { () -> Void in
             
             self.overlayBar.frame.origin.y = -self.overlayBar.frame.size.height
             
             }) { (finished) -> Void in
                 
-                self.overlayBar.hidden = true
+                self.overlayBar.isHidden = true
         }
     }
     
-    private func statusBarDidChangeFrame(note: NSNotification) {
+    private func statusBarDidChangeFrame(_ note: Notification) {
         statusBarDidChangeFrame()
     }
     
     public func statusBarDidChangeFrame() {
-        let orientation = UIApplication.sharedApplication().statusBarOrientation
+        let orientation = UIApplication.shared().statusBarOrientation
         
         self.overlayBar.transform = transformForOrientation(orientation)
         
-        var frame = UIApplication.sharedApplication().statusBarFrame
+        var frame = UIApplication.shared().statusBarFrame
         
         if UIInterfaceOrientationIsLandscape(orientation) {
             frame = frame.rectByReversingSize()
-            if  UIDevice.currentDevice().userInterfaceIdiom == .Phone {
+            if  UIDevice.current().userInterfaceIdiom == .phone {
                 frame.origin.x = frame.size.width - frame.origin.x
             }
-            else if orientation == UIInterfaceOrientation.LandscapeRight {
-                if let width = UIApplication.sharedApplication().keyWindow?.bounds.height {
+            else if orientation == UIInterfaceOrientation.landscapeRight {
+                if let width = UIApplication.shared().keyWindow?.bounds.height {
                     frame.origin.x = width - frame.size.width
                 }
             }
@@ -195,8 +219,8 @@ public class Blobfish {
         self.overlayBar.frame = frame
     }
     
-    @objc func aCallWentThrough(note: NSNotification) {
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+    @objc func aCallWentThrough(_ note: Notification) {
+        DispatchQueue.main.async(execute: { () -> Void in
             if let reachability = self.reachability where reachability.isReachable() {
                 self.hideOverlayBar()
             }
@@ -212,43 +236,43 @@ public class Blobfish {
      - parameter blobable:               An instance conforming to *Blobable*
      */
     
-    public func handle(blobable:Blobable) {
+    public func handle(_ blobable:Blobable) {
         guard let blob = blobable.blob else { return }
         
         switch (blob.style) {
-        case .Overlay:
+        case .overlay:
             showOverlayBlock(title: blob.title)
             
-        case let .Alert(message, actions):
+        case let .alert(message, actions):
             showAlertBlock(title: blob.title, message: message, actions: actions)
         }
     }
     
     //MARK: Utils
     
-    private func degreesToRadians(degrees: CGFloat) -> CGFloat { return (degrees * CGFloat(M_PI) / CGFloat(180.0)) }
+    private func degreesToRadians(_ degrees: CGFloat) -> CGFloat { return (degrees * CGFloat(M_PI) / CGFloat(180.0)) }
     
-    private func transformForOrientation(orientation: UIInterfaceOrientation) -> CGAffineTransform {
+    private func transformForOrientation(_ orientation: UIInterfaceOrientation) -> CGAffineTransform {
         
         switch (orientation) {
             
-        case UIInterfaceOrientation.LandscapeLeft:
-            return CGAffineTransformMakeRotation(-degreesToRadians(90))
+        case UIInterfaceOrientation.landscapeLeft:
+            return CGAffineTransform(rotationAngle: -degreesToRadians(90))
             
-        case UIInterfaceOrientation.LandscapeRight:
-            return CGAffineTransformMakeRotation(degreesToRadians(90))
+        case UIInterfaceOrientation.landscapeRight:
+            return CGAffineTransform(rotationAngle: degreesToRadians(90))
             
-        case UIInterfaceOrientation.PortraitUpsideDown:
-            return CGAffineTransformMakeRotation(degreesToRadians(180))
+        case UIInterfaceOrientation.portraitUpsideDown:
+            return CGAffineTransform(rotationAngle: degreesToRadians(180))
             
         default:
-            return CGAffineTransformMakeRotation(degreesToRadians(0))
+            return CGAffineTransform(rotationAngle: degreesToRadians(0))
         }
     }
 }
 
 internal extension CGRect {
     func rectByReversingSize() -> CGRect {
-        return CGRect(origin: self.origin, size: CGSizeMake(self.size.height, self.size.width))
+        return CGRect(origin: self.origin, size: CGSize(width: self.size.height, height: self.size.width))
     }
 }

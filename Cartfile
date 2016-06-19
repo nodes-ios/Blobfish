@@ -1,2 +1,2 @@
-github "ashleymills/Reachability.swift"
-github "Alamofire/Alamofire" ~> 3.0
+github "ashleymills/Reachability.swift" "feature/ios10"
+github "Alamofire/Alamofire" "swift3"
