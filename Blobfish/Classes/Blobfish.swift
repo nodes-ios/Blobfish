@@ -18,7 +18,7 @@ import Reachability
 public class Blobfish {
     
     private static let once = {
-        NotificationCenter.default().addObserver(Blobfish.sharedInstance, selector: #selector(Blobfish.aCallWentThrough(_:)), name: "APICallSucceededNotification", object: nil)
+        NotificationCenter.default.addObserver(Blobfish.sharedInstance, selector: #selector(Blobfish.aCallWentThrough(_:)), name: "APICallSucceededNotification", object: nil)
     }
     
     private var reachability = try? Reachability.reachabilityForInternetConnection() {
