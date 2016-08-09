@@ -18,7 +18,7 @@ public class MessageBar: UIWindow {
         label.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(label)
         
-        self.label.backgroundColor = UIColor.clear()
+        self.label.backgroundColor = UIColor.clear
         self.label.textAlignment = NSTextAlignment.center
         self.label.adjustsFontSizeToFitWidth = true
         if #available(iOS 9, *) {
@@ -27,9 +27,9 @@ public class MessageBar: UIWindow {
         self.label.lineBreakMode = NSLineBreakMode.byTruncatingTail
         self.label.numberOfLines = 1
         self.label.minimumScaleFactor = 0.2
-        self.label.textColor = UIColor.white()
+        self.label.textColor = UIColor.white
         self.label.font = UIFont.systemFont(ofSize: 8)
-        self.backgroundColor = UIColor.red()
+        self.backgroundColor = UIColor.red
         self.isHidden = true
         self.windowLevel = UIWindowLevelStatusBar+1;
     }
