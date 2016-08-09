@@ -21,7 +21,7 @@ public class Blobfish {
         NotificationCenter.default.addObserver(Blobfish.sharedInstance, selector: #selector(Blobfish.aCallWentThrough(_:)), name: "APICallSucceededNotification" as NSNotification.Name, object: nil)
     }
     
-    private var reachability = try? Reachability.reachabilityForInternetConnection() {
+    private var reachability = Reachability() {
         didSet {
             self.reachabilityInitialization()
         }
@@ -32,7 +32,7 @@ public class Blobfish {
     
     public static let sharedInstance = Blobfish()
     
-    var alertWindow = UIWindow(frame: UIScreen.main().bounds) {
+    var alertWindow = UIWindow(frame: UIScreen.main.bounds) {
         didSet {
             alertWindow.windowLevel = UIWindowLevelAlert + 1
         }
@@ -82,7 +82,7 @@ public class Blobfish {
     }
     */
     
-    lazy var overlayBar = MessageBar(frame: UIApplication.shared().statusBarFrame)
+    lazy var overlayBar = MessageBar(frame: UIApplication.shared.statusBarFrame)
     
     
     // MARK: - Error Alert Block
@@ -197,19 +197,19 @@ public class Blobfish {
     }
     
     public func statusBarDidChangeFrame() {
-        let orientation = UIApplication.shared().statusBarOrientation
+        let orientation = UIApplication.shared.statusBarOrientation
         
         self.overlayBar.transform = transformForOrientation(orientation)
         
-        var frame = UIApplication.shared().statusBarFrame
+        var frame = UIApplication.shared.statusBarFrame
         
         if UIInterfaceOrientationIsLandscape(orientation) {
             frame = frame.rectByReversingSize()
-            if  UIDevice.current().userInterfaceIdiom == .phone {
+            if  UIDevice.current.userInterfaceIdiom == .phone {
                 frame.origin.x = frame.size.width - frame.origin.x
             }
             else if orientation == UIInterfaceOrientation.landscapeRight {
-                if let width = UIApplication.shared().keyWindow?.bounds.height {
+                if let width = UIApplication.shared.keyWindow?.bounds.height {
                     frame.origin.x = width - frame.size.width
                 }
             }
@@ -221,7 +221,7 @@ public class Blobfish {
     
     @objc func aCallWentThrough(_ note: Notification) {
         DispatchQueue.main.async(execute: { () -> Void in
-            if let reachability = self.reachability where reachability.isReachable() {
+            if let reachability = self.reachability, reachability.isReachable {
                 self.hideOverlayBar()
             }
         })
