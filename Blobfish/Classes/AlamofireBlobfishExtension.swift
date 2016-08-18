@@ -49,7 +49,7 @@ extension Blobfish {
          */
         
         
-        public static var blobForConnectionError:(code:Int) -> Blob? = { code in
+        public static var blobForConnectionError:(_ code:Int) -> Blob? = { code in
             print("Warning! Please assign values to all 'messageFor***' static properties on AlamofireBlobfishConfiguration.. Using default values...")
             var title = "_Something went wrong. Please check your connection and try again"
             
@@ -63,7 +63,7 @@ extension Blobfish {
          */
         
         
-        public static var blobForUnknownError:(code:Int, localizedStringForCode:String) -> Blob? = { (code, localizedStringForCode) in
+        public static var blobForUnknownError:(_ code:Int, _ localizedStringForCode:String) -> Blob? = { (code, localizedStringForCode) in
             print("Warning! Please assign values to all 'messageFor***' static properties on AlamofireBlobfishConfiguration.. Using default values...")
             let title = "_An error occured"
             let action = Blob.AlertAction(title: "OK", handler: nil)
@@ -139,13 +139,13 @@ extension Alamofire.Response: Blobable {
             return Blobfish.AlamofireConfig.blobForTokenExpired()
             
         case .connection:
-            return Blobfish.AlamofireConfig.blobForConnectionError(code: statusCode ?? 0)
+            return Blobfish.AlamofireConfig.blobForConnectionError(statusCode )
             
         default:
             var localizedMessageForStatusCode:String = ""
             localizedMessageForStatusCode = HTTPURLResponse.localizedString(forStatusCode: statusCode)
             
-            return Blobfish.AlamofireConfig.blobForUnknownError(code: statusCode ?? (errorCode ?? -1), localizedStringForCode: localizedMessageForStatusCode)
+            return Blobfish.AlamofireConfig.blobForUnknownError(statusCode , localizedMessageForStatusCode)
         }
     }
     
@@ -166,7 +166,7 @@ extension Alamofire.Response: Blobable {
             return customMapping
         }
         
-        let apiError    = ErrorCode(rawValue: statusCode ?? 0) ?? .unknownError
+        let apiError    = ErrorCode(rawValue: statusCode ) ?? .unknownError
         switch (apiError) {
             
         case .unauthorized, .forbidden:

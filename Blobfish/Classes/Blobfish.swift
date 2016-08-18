@@ -18,7 +18,7 @@ import Reachability
 public class Blobfish {
     
     private static let once = {
-        NotificationCenter.default.addObserver(Blobfish.sharedInstance, selector: #selector(Blobfish.aCallWentThrough(_:)), name: "APICallSucceededNotification" as NSNotification.Name, object: nil)
+        NotificationCenter.default.addObserver(Blobfish.sharedInstance, selector: #selector(Blobfish.aCallWentThrough(_:)), name: NSNotification.Name(rawValue: "APICallSucceededNotification"), object: nil)
     }
     
     private var reachability = Reachability() {
@@ -27,8 +27,8 @@ public class Blobfish {
         }
     }
     
-    public typealias ErrorHandlerAlertCompletion = (retryButtonClicked:Bool) -> Void
-    public typealias ErrorHandlerShowAlertBlock = (title:String, message:String?, actions:[Blob.AlertAction]) -> Void
+    public typealias ErrorHandlerAlertCompletion = (_ retryButtonClicked:Bool) -> Void
+    public typealias ErrorHandlerShowAlertBlock = (_ title:String, _ message:String?, _ actions:[Blob.AlertAction]) -> Void
     
     public static let sharedInstance = Blobfish()
     
@@ -139,7 +139,7 @@ public class Blobfish {
     If you want to customize the appearance of the overlay bar, see the overlayBarConfiguration property.
     */
     
-    public var showOverlayBlock: (title:String) -> Void = { message in
+    public var showOverlayBlock: (_ title:String) -> Void = { message in
         Blobfish.sharedInstance.reachabilityInitialization()
         Blobfish.sharedInstance.overlayBar.label.text = message
         Blobfish.sharedInstance.showOverlayBar()
@@ -153,7 +153,7 @@ public class Blobfish {
      If you want to customize the appearance of the overlay bar, see the overlayBarConfiguration property.
      */
     
-    public var overlayBarConfiguration:((bar:MessageBar) -> Void)?
+    public var overlayBarConfiguration:((_ bar:MessageBar) -> Void)?
     
     //MARK: - Private overlay methods
     
@@ -221,7 +221,7 @@ public class Blobfish {
     
     @objc func aCallWentThrough(_ note: Notification) {
         DispatchQueue.main.async(execute: { () -> Void in
-            if let reachability = self.reachability, reachability.isReachable {
+            if (self.reachability?.isReachable) != nil {
                 self.hideOverlayBar()
             }
         })
@@ -241,10 +241,10 @@ public class Blobfish {
         
         switch (blob.style) {
         case .overlay:
-            showOverlayBlock(title: blob.title)
+            showOverlayBlock(blob.title)
             
         case let .alert(message, actions):
-            showAlertBlock(title: blob.title, message: message, actions: actions)
+            showAlertBlock(blob.title, message, actions)
         }
     }
     
