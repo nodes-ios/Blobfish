@@ -109,7 +109,7 @@ extension Blobfish {
     }
 }
 
-extension Alamofire.Response: Blobable {
+extension Alamofire.DataResponse: Blobable {
     
     /**
      This Blobfish extension allows you to pass a Response object to Blobfish. 
