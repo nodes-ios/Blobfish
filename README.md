@@ -11,9 +11,17 @@ Easily handle errors and present them to the user in a nice way.
 ## 📦 Installation
 
 ### Carthage
+~~~bash
+github "nodes-ios/Blobfish" ~> 1.0
 ~~~
-github "nodes-ios/Blobfish"
-~~~
+
+> Last versions compatible with lower Swift versions:  
+>
+> **Swift 2.3**  
+> `github "nodes-ios/Blobfish" == 0.2.0`
+>
+> **Swift 2.2**  
+> `github "nodes-ios/Blobfish" == 0.1.2`
 
 ## 🔧 Setup
 
