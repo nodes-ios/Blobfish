@@ -7,30 +7,22 @@
 //
 
 import UIKit
-import Reachability
+import Alamofire
 
 /**
  Blobfish can present general error messages related to URL Requests in a meaningful way. Pass an object conforming to 
  the *Blobable* protocol to it whenever you  have a request that fails with a non-endpoint-specific error.
  */
-
-
 public class Blobfish {
-    
-    private static let once = {
-        NotificationCenter.default.addObserver(Blobfish.sharedInstance, selector: #selector(Blobfish.aCallWentThrough(_:)), name: NSNotification.Name(rawValue: "APICallSucceededNotification"), object: nil)
-    }
-    
-    private var reachability = Reachability() {
-        didSet {
-            self.reachabilityInitialization()
-        }
-    }
-    
+
     public typealias ErrorHandlerAlertCompletion = (_ retryButtonClicked:Bool) -> Void
     public typealias ErrorHandlerShowAlertBlock = (_ title:String, _ message:String?, _ actions:[Blob.AlertAction]) -> Void
     
     public static let sharedInstance = Blobfish()
+
+    var reachabilityManager: NetworkReachabilityManager?
+
+    lazy var overlayBar = MessageBar(frame: UIApplication.shared.statusBarFrame)
     
     var alertWindow = UIWindow(frame: UIScreen.main.bounds) {
         didSet {
@@ -38,64 +30,19 @@ public class Blobfish {
         }
     }
     
-    var alreadyShowingAlert:Bool { return (Blobfish.sharedInstance.alertWindow.isHidden == false) }
+    var alreadyShowingAlert: Bool {
+        return Blobfish.sharedInstance.alertWindow.isHidden == false
+    }
 
-    
-    private func reachabilityInitialization() {
-        if reachability?.whenReachable == nil {
-            reachability?.whenReachable = { reachability in
-                DispatchQueue.main.async(execute: { () -> Void in
-                    self.hideOverlayBar()
-                })
-            }
-        }
-        
-        do {
-            try reachability?.startNotifier()
-        } catch {
-            print("Unable to start notifier")
-        }
-        
-        
-      _ = Blobfish.once()
-        
-    }
-    /*
-    private func reachabilityInitialization() {
-        if reachability?.whenReachable == nil {
-            reachability?.whenReachable = { reachability in
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.hideOverlayBar()
-                })
-            }
-        }
-        
-        do {
-            try reachability?.startNotifier()
-        } catch {
-            print("Unable to start notifier")
-        }
-        
-        dispatch_once(&Blobfish.dispatchOnceToken) {
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(Blobfish.aCallWentThrough(_:)), name: "APICallSucceededNotification", object: nil)
-        }
-    }
-    */
-    
-    lazy var overlayBar = MessageBar(frame: UIApplication.shared.statusBarFrame)
-    
-    
-    // MARK: - Error Alert Block
-    
     /**
-    The content of this closure is responsible for showing showing the UI for an error whose style is MessageStyle.Alert. The default value shows a native alert using UIAlertController.
-    
-    Override this to use a custom alert for your app.
-    */
-    
+     The content of this closure is responsible for showing showing the UI for an error whose style is MessageStyle.Alert. The default value shows a native alert using UIAlertController.
+
+     Override this to use a custom alert for your app.
+     */
+
     public var showAlertBlock: ErrorHandlerShowAlertBlock = {
         (title, message, actions) in
-        
+
         let alert = UIAlertController(title: title, message:message, preferredStyle: UIAlertControllerStyle.alert)
         for action in actions {
             alert.addAction(UIAlertAction(title: action.title, style: .default, handler: { (_) in
@@ -103,10 +50,65 @@ public class Blobfish {
                 action.handler?()
             }))
         }
-        
+
         Blobfish.sharedInstance.presentViewController(alert)
-        
+
     }
+
+    /**
+     The content of this closure is responsible for showing showing the UI for an error whose style is Overlay. The default value shows a native alert using UIAlertController.
+
+     Override this to use a custom alert for your app.
+
+     If you want to customize the appearance of the overlay bar, see the overlayBarConfiguration property.
+     */
+
+    public var showOverlayBlock: (_ title:String) -> Void = { message in
+        Blobfish.sharedInstance.overlayBar.label.text = message
+        Blobfish.sharedInstance.showOverlayBar()
+    }
+
+    /**
+     The content of this closure is responsible for showing showing the UI for an error whose style is Overlay. The default value shows a native alert using UIAlertController.
+
+     Override this to use a custom alert for your app.
+
+     If you want to customize the appearance of the overlay bar, see the overlayBarConfiguration property.
+     */
+
+    public var overlayBarConfiguration:((_ bar:MessageBar) -> Void)?
+
+    // MARK: - Init & Deinit -
+
+    private init() {
+        setupReachability()
+
+        NotificationCenter.default.addObserver(Blobfish.sharedInstance,
+                                               selector: #selector(Blobfish.aCallWentThrough(_:)),
+                                               name: NSNotification.Name(rawValue: "APICallSucceededNotification"),
+                                               object: nil)
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    // MARK: - Reachability -
+
+    private func setupReachability() {
+        reachabilityManager = NetworkReachabilityManager(host: "http://google.com")
+        reachabilityManager?.listener = { state in
+            switch state {
+            case .reachable(_):
+                self.hideOverlayBar()
+            default:
+                break
+            }
+        }
+        reachabilityManager?.startListening()
+    }
+    
+    // MARK: - Alert -
     
     /**
     This method can be used for presenting a custom viewcontroller while still using the Blobfish boilerplate code for keeping track of already presented alerts. IMPORTANT: If this method is used you must call Blobfish.hideAlertWindow() somewhere in every alert action to regain interaction with app
@@ -129,33 +131,8 @@ public class Blobfish {
     public static func hideAlertWindow() {
         Blobfish.sharedInstance.alertWindow.isHidden = true
     }
-    
-    //MARK: - Message Overlay
-    /**
-    The content of this closure is responsible for showing showing the UI for an error whose style is Overlay. The default value shows a native alert using UIAlertController.
-    
-    Override this to use a custom alert for your app.
-    
-    If you want to customize the appearance of the overlay bar, see the overlayBarConfiguration property.
-    */
-    
-    public var showOverlayBlock: (_ title:String) -> Void = { message in
-        Blobfish.sharedInstance.reachabilityInitialization()
-        Blobfish.sharedInstance.overlayBar.label.text = message
-        Blobfish.sharedInstance.showOverlayBar()
-    }
-    
-    /**
-     The content of this closure is responsible for showing showing the UI for an error whose style is Overlay. The default value shows a native alert using UIAlertController.
-     
-     Override this to use a custom alert for your app.
-     
-     If you want to customize the appearance of the overlay bar, see the overlayBarConfiguration property.
-     */
-    
-    public var overlayBarConfiguration:((_ bar:MessageBar) -> Void)?
-    
-    //MARK: - Private overlay methods
+
+    //MARK: - Overlay -
     
     private func showOverlayBar() {
         if (self.overlayBar.isHidden) { // Not already shown
@@ -191,6 +168,8 @@ public class Blobfish {
                 self.overlayBar.isHidden = true
         }
     }
+
+    // MARK: - Notifications -
     
     private func statusBarDidChangeFrame(_ note: Notification) {
         statusBarDidChangeFrame()
@@ -220,15 +199,15 @@ public class Blobfish {
     }
     
     @objc func aCallWentThrough(_ note: Notification) {
-        DispatchQueue.main.async(execute: { () -> Void in
-            if (self.reachability?.isReachable) != nil {
+        DispatchQueue.main.async(execute: {
+            if self.reachabilityManager?.isReachable == true {
                 self.hideOverlayBar()
             }
         })
     }
     
     
-    // MARK: - Blob handling
+    // MARK: - Blob Handling -
     
     /**
      Takes a *Blobable* object and displays an error message according to the *blob* returned by the object.
@@ -248,9 +227,11 @@ public class Blobfish {
         }
     }
     
-    //MARK: Utils
+    // MARK: - Utils -
     
-    private func degreesToRadians(_ degrees: CGFloat) -> CGFloat { return (degrees * CGFloat(M_PI) / CGFloat(180.0)) }
+    private func degreesToRadians(_ degrees: CGFloat) -> CGFloat {
+        return (degrees * CGFloat(M_PI) / CGFloat(180.0))
+    }
     
     private func transformForOrientation(_ orientation: UIInterfaceOrientation) -> CGAffineTransform {
         

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		300F43CE1C95875500170B26 /* Reachability.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 300F43CA1C95875500170B26 /* Reachability.framework */; };
+		01BBF0121DE23979003AC718 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01BBF0081DE23966003AC718 /* Alamofire.framework */; };
 		307ED5341C98AEE7002B7B74 /* Blobfish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA212F1C957F1500DC883C /* Blobfish.swift */; };
 		30925AF81C95892E00895BE6 /* Blobable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA21301C957F1500DC883C /* Blobable.swift */; };
 		30925AFB1C9589B800895BE6 /* Blob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30925AFA1C9589B800895BE6 /* Blob.swift */; };
@@ -28,7 +28,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		300F43CA1C95875500170B26 /* Reachability.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reachability.framework; path = Carthage/Build/iOS/Reachability.framework; sourceTree = "<group>"; };
+		01BBF0031DE23966003AC718 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
+		01BBF0081DE23966003AC718 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
+		01BBF00C1DE23966003AC718 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
+		01BBF00F1DE23966003AC718 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		30925AFA1C9589B800895BE6 /* Blob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blob.swift; sourceTree = "<group>"; };
 		30BA21141C957E3100DC883C /* Blobfish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Blobfish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30BA21171C957E3100DC883C /* Blobfish.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Blobfish.h; sourceTree = "<group>"; };
@@ -47,7 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				300F43CE1C95875500170B26 /* Reachability.framework in Frameworks */,
+				01BBF0121DE23979003AC718 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +65,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01BBF0021DE23966003AC718 /* Mac */ = {
+			isa = PBXGroup;
+			children = (
+				01BBF0031DE23966003AC718 /* Alamofire.framework */,
+			);
+			name = Mac;
+			path = Carthage/Build/Mac;
+			sourceTree = "<group>";
+		};
+		01BBF0051DE23966003AC718 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				01BBF0081DE23966003AC718 /* Alamofire.framework */,
+			);
+			name = iOS;
+			path = Carthage/Build/iOS;
+			sourceTree = "<group>";
+		};
+		01BBF00A1DE23966003AC718 /* tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				01BBF00C1DE23966003AC718 /* Alamofire.framework */,
+			);
+			name = tvOS;
+			path = Carthage/Build/tvOS;
+			sourceTree = "<group>";
+		};
+		01BBF00E1DE23966003AC718 /* watchOS */ = {
+			isa = PBXGroup;
+			children = (
+				01BBF00F1DE23966003AC718 /* Alamofire.framework */,
+			);
+			name = watchOS;
+			path = Carthage/Build/watchOS;
+			sourceTree = "<group>";
+		};
 		30BA210A1C957E3100DC883C = {
 			isa = PBXGroup;
 			children = (
@@ -115,7 +154,10 @@
 		30BA213A1C957FC000DC883C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				300F43CA1C95875500170B26 /* Reachability.framework */,
+				01BBF0021DE23966003AC718 /* Mac */,
+				01BBF0051DE23966003AC718 /* iOS */,
+				01BBF00A1DE23966003AC718 /* tvOS */,
+				01BBF00E1DE23966003AC718 /* watchOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -177,7 +219,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0800;
+				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = Nodes;
 				TargetAttributes = {
 					30BA21131C957E3100DC883C = {
@@ -270,8 +312,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -321,8 +365,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -344,6 +390,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -354,6 +401,7 @@
 		30BA21291C957E3100DC883C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -364,7 +412,7 @@
 				);
 				INFOPLIST_FILE = Blobfish/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nodes.Blobfish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -376,6 +424,7 @@
 		30BA212A1C957E3100DC883C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -386,7 +435,7 @@
 				);
 				INFOPLIST_FILE = Blobfish/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nodes.Blobfish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
