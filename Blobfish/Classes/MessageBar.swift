@@ -9,7 +9,7 @@
 import UIKit
 
 public class MessageBar: UIWindow {
-    public let label = UILabel(frame: CGRectZero)
+    public let label = UILabel(frame: CGRect.zero)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -18,19 +18,19 @@ public class MessageBar: UIWindow {
         label.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(label)
         
-        self.label.backgroundColor = UIColor.clearColor()
-        self.label.textAlignment = NSTextAlignment.Center
+        self.label.backgroundColor = UIColor.clear
+        self.label.textAlignment = NSTextAlignment.center
         self.label.adjustsFontSizeToFitWidth = true
         if #available(iOS 9, *) {
             self.label.allowsDefaultTighteningForTruncation = true
         }
-        self.label.lineBreakMode = NSLineBreakMode.ByTruncatingTail
+        self.label.lineBreakMode = NSLineBreakMode.byTruncatingTail
         self.label.numberOfLines = 1
         self.label.minimumScaleFactor = 0.2
-        self.label.textColor = UIColor.whiteColor()
-        self.label.font = UIFont.systemFontOfSize(8)
-        self.backgroundColor = UIColor.redColor()
-        self.hidden = true
+        self.label.textColor = UIColor.white
+        self.label.font = UIFont.systemFont(ofSize: 8)
+        self.backgroundColor = UIColor.red
+        self.isHidden = true
         self.windowLevel = UIWindowLevelStatusBar+1;
     }
     
