@@ -83,7 +83,7 @@ public class Blobfish {
     private init() {
         setupReachability()
 
-        NotificationCenter.default.addObserver(Blobfish.sharedInstance,
+        NotificationCenter.default.addObserver(self,
                                                selector: #selector(Blobfish.aCallWentThrough(_:)),
                                                name: NSNotification.Name(rawValue: "APICallSucceededNotification"),
                                                object: nil)
