@@ -3,7 +3,7 @@
 </p>
 
 Easily handle errors and present them to the user in a nice way.
-
+[![Travis](https://travis-ci.org/nodes-ios/Blobfish.svg?branch=master)](https://travis-ci.org/nodes-ios/Blobfish)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ![Plaform](https://img.shields.io/badge/platform-iOS-lightgrey.svg)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/nodes-ios/Policeman/blob/master/LICENSE)
