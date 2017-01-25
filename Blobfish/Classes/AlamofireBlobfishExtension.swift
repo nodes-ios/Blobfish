@@ -77,7 +77,7 @@ extension Blobfish {
          */
         
         
-        public static var blobForTokenExpired:() -> Blob? = {
+        public static var blobForTokenExpired:(_ code:Int) -> Blob? = { code in
             var title = "_You session has expired. Please log in again"
             fatalError("errorForTokenExpired is not set on AlamofireBlobfishConfiguration")
         }
@@ -136,7 +136,7 @@ extension Alamofire.DataResponse: Blobable {
             return nil
             
         case .token:
-            return Blobfish.AlamofireConfig.blobForTokenExpired()
+            return Blobfish.AlamofireConfig.blobForTokenExpired(statusCode)
             
         case .connection:
             return Blobfish.AlamofireConfig.blobForConnectionError(statusCode )
