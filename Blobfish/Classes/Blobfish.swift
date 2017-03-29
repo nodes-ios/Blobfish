@@ -135,6 +135,8 @@ public class Blobfish {
     //MARK: - Overlay -
     
     private func showOverlayBar() {
+        overlayBarConfiguration?(Blobfish.sharedInstance.overlayBar)    
+        
         if (self.overlayBar.isHidden) { // Not already shown
             // Do not re-animate
             self.overlayBar.frame.origin.y = -overlayBar.frame.height
