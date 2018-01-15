@@ -168,13 +168,10 @@ extension Alamofire.DataResponse: Blobable {
         
         let apiError    = ErrorCode(rawValue: statusCode ) ?? .unknownError
         switch (apiError) {
-            
         case .unauthorized, .forbidden:
             return .token
-            
         case .noConnection, .zero, .clientTimeOut, .notConnectedToInternet, .networkConnectionLost, .invalid3rdPartyToken:
             return .connection
-            
         default:
             return .unknown
         }

@@ -35,7 +35,7 @@ public class Blobfish {
     }
 
     /**
-     The content of this closure is responsible for showing showing the UI for an error whose style is MessageStyle.Alert. The default value shows a native alert using UIAlertController.
+     The content of this closure is responsible for showing the UI for an error whose style is MessageStyle.Alert. The default value shows a native alert using UIAlertController.
 
      Override this to use a custom alert for your app.
      */
@@ -56,20 +56,20 @@ public class Blobfish {
     }
 
     /**
-     The content of this closure is responsible for showing showing the UI for an error whose style is Overlay. The default value shows a native alert using UIAlertController.
+     The content of this closure is responsible for showing the UI for an error whose style is Overlay. The default value shows a native alert using UIAlertController.
 
      Override this to use a custom alert for your app.
 
      If you want to customize the appearance of the overlay bar, see the overlayBarConfiguration property.
      */
-
+    
     public var showOverlayBlock: (_ title:String) -> Void = { message in
         Blobfish.sharedInstance.overlayBar.label.text = message
         Blobfish.sharedInstance.showOverlayBar()
     }
 
     /**
-     The content of this closure is responsible for showing showing the UI for an error whose style is Overlay. The default value shows a native alert using UIAlertController.
+     The content of this closure is responsible for showing the UI for an error whose style is Overlay. The default value shows a native alert using UIAlertController.
 
      Override this to use a custom alert for your app.
 
