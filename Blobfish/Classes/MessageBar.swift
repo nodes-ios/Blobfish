@@ -16,7 +16,7 @@ public class MessageBar: UIWindow {
 
         self.translatesAutoresizingMaskIntoConstraints = false
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.bounds.origin.y = label.bounds.origin.y + LayoutUtils.safeAreaTop()
+        label.bounds.origin.y = self.bounds.size.height - 15.0
         label.bounds.size.height = 15.0
         self.addSubview(label)
         
