@@ -9,6 +9,11 @@
 import Foundation
 
 public struct LayoutUtils {
+    
+    public static func extraLabelHeightForMessageBar() -> CGFloat {
+        return safeAreaTop() > 0.0 ? 15.0 : 0.0
+    }
+    
     public static func safeAreaTop() -> CGFloat {
         if #available(iOS 11.0, *) {
             if let window = UIApplication.shared.keyWindow {

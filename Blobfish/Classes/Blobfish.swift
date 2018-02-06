@@ -23,7 +23,7 @@ public class Blobfish {
     var reachabilityManager: NetworkReachabilityManager?
 
     //safe area top added for iphone x so message bar isnt displayed under the notch
-    lazy var overlayBar = MessageBar(frame: CGRect.init(x: UIApplication.shared.statusBarFrame.origin.x, y: UIApplication.shared.statusBarFrame.origin.y, width: UIApplication.shared.statusBarFrame.size.width, height: UIApplication.shared.statusBarFrame.size.height + LayoutUtils.safeAreaTop()))
+    lazy var overlayBar = MessageBar(frame: CGRect.init(x: UIApplication.shared.statusBarFrame.origin.x, y: UIApplication.shared.statusBarFrame.origin.y, width: UIApplication.shared.statusBarFrame.size.width, height: UIApplication.shared.statusBarFrame.size.height + LayoutUtils.extraLabelHeightForMessageBar()))
     
     var alertWindow = UIWindow(frame: UIScreen.main.bounds) {
         didSet {
@@ -184,7 +184,7 @@ public class Blobfish {
         self.overlayBar.transform = transformForOrientation(orientation)
         
         //status bar frame with safe area layout
-        var frame = CGRect.init(x: UIApplication.shared.statusBarFrame.origin.x, y: UIApplication.shared.statusBarFrame.origin.y, width: UIApplication.shared.statusBarFrame.size.width, height: UIApplication.shared.statusBarFrame.size.height + LayoutUtils.safeAreaTop())
+        var frame = CGRect.init(x: UIApplication.shared.statusBarFrame.origin.x, y: UIApplication.shared.statusBarFrame.origin.y, width: UIApplication.shared.statusBarFrame.size.width, height: UIApplication.shared.statusBarFrame.size.height + LayoutUtils.extraLabelHeightForMessageBar())
         
         if UIInterfaceOrientationIsLandscape(orientation) {
             frame = frame.rectByReversingSize()
