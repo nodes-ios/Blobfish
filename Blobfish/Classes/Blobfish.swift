@@ -183,7 +183,8 @@ public class Blobfish {
         
         self.overlayBar.transform = transformForOrientation(orientation)
         
-        var frame = UIApplication.shared.statusBarFrame
+        //status bar frame with safe area layout
+        var frame = CGRect.init(x: UIApplication.shared.statusBarFrame.origin.x, y: UIApplication.shared.statusBarFrame.origin.y, width: UIApplication.shared.statusBarFrame.size.width, height: UIApplication.shared.statusBarFrame.size.height + LayoutUtils.safeAreaTop())
         
         if UIInterfaceOrientationIsLandscape(orientation) {
             frame = frame.rectByReversingSize()
