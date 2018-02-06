@@ -16,7 +16,7 @@ public class MessageBar: UIWindow {
 
         self.translatesAutoresizingMaskIntoConstraints = false
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.frame.origin.y = label.frame.origin.y + LayoutUtils.safeAreaTop()
+        label.frame.origin.y = label.frame.origin.y - LayoutUtils.safeAreaTop()
         //label.frame.size.height = label.frame.size.height - LayoutUtils.extraLabelHeightForMessageBar()
         self.addSubview(label)
         
@@ -38,7 +38,7 @@ public class MessageBar: UIWindow {
     
     public override func layoutSubviews() {
         label.frame = self.bounds.insetBy(dx: 8, dy: 0)
-        label.frame.origin.y = label.frame.origin.y + LayoutUtils.safeAreaTop()
+        label.frame.origin.y = label.frame.origin.y - LayoutUtils.safeAreaTop()
         //label.frame.size.height = label.frame.size.height - LayoutUtils.extraLabelHeightForMessageBar()
     }
     
