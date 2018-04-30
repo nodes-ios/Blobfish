@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		01BBF0121DE23979003AC718 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01BBF0081DE23966003AC718 /* Alamofire.framework */; };
-		19788FCB36F65E68EBCF710B /* Pods_BlobfishTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C6ACA885D097CD58B884B43 /* Pods_BlobfishTests.framework */; };
 		296995931E39469D005B0B6C /* BlobfishTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA21231C957E3100DC883C /* BlobfishTests.swift */; };
 		307ED5341C98AEE7002B7B74 /* Blobfish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA212F1C957F1500DC883C /* Blobfish.swift */; };
 		30925AF81C95892E00895BE6 /* Blobable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA21301C957F1500DC883C /* Blobable.swift */; };
@@ -17,6 +16,7 @@
 		30BA211F1C957E3100DC883C /* Blobfish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30BA21141C957E3100DC883C /* Blobfish.framework */; };
 		30BA21391C957F7E00DC883C /* MessageBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA21311C957F1500DC883C /* MessageBar.swift */; };
 		30CC1B1F1C95858900DB923F /* AlamofireBlobfishExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA21331C957F1500DC883C /* AlamofireBlobfishExtension.swift */; };
+		E89CAB041BA631CE76639F6D /* Pods_Blobfish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2154555D4C5A6595F80DAEFA /* Pods_Blobfish.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,7 +34,6 @@
 		01BBF0081DE23966003AC718 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		01BBF00C1DE23966003AC718 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		01BBF00F1DE23966003AC718 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
-		1A0C058DCFF0DC84F0746A1E /* Pods-BlobfishTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlobfishTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BlobfishTests/Pods-BlobfishTests.release.xcconfig"; sourceTree = "<group>"; };
 		2154555D4C5A6595F80DAEFA /* Pods_Blobfish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blobfish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30925AFA1C9589B800895BE6 /* Blob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blob.swift; sourceTree = "<group>"; };
 		30BA21141C957E3100DC883C /* Blobfish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Blobfish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,7 +47,6 @@
 		30BA21311C957F1500DC883C /* MessageBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBar.swift; sourceTree = "<group>"; };
 		30BA21331C957F1500DC883C /* AlamofireBlobfishExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireBlobfishExtension.swift; sourceTree = "<group>"; };
 		3AE64CAAEF43C0709C14EB0B /* Pods-Blobfish.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blobfish.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Blobfish/Pods-Blobfish.debug.xcconfig"; sourceTree = "<group>"; };
-		57781E20B7E9C9FC5C58264C /* Pods-BlobfishTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BlobfishTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BlobfishTests/Pods-BlobfishTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5C0DDB2E879D0A042EBC0ED4 /* Pods-Blobfish.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Blobfish.release.xcconfig"; path = "Pods/Target Support Files/Pods-Blobfish/Pods-Blobfish.release.xcconfig"; sourceTree = "<group>"; };
 		8C6ACA885D097CD58B884B43 /* Pods_BlobfishTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BlobfishTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -59,6 +57,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				01BBF0121DE23979003AC718 /* Alamofire.framework in Frameworks */,
+				E89CAB041BA631CE76639F6D /* Pods_Blobfish.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,7 +66,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				30BA211F1C957E3100DC883C /* Blobfish.framework in Frameworks */,
-				19788FCB36F65E68EBCF710B /* Pods_BlobfishTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,8 +177,6 @@
 			children = (
 				3AE64CAAEF43C0709C14EB0B /* Pods-Blobfish.debug.xcconfig */,
 				5C0DDB2E879D0A042EBC0ED4 /* Pods-Blobfish.release.xcconfig */,
-				57781E20B7E9C9FC5C58264C /* Pods-BlobfishTests.debug.xcconfig */,
-				1A0C058DCFF0DC84F0746A1E /* Pods-BlobfishTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -203,6 +199,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 30BA21281C957E3100DC883C /* Build configuration list for PBXNativeTarget "Blobfish" */;
 			buildPhases = (
+				5B7EF28B7C7F156C731D86EE /* [CP] Check Pods Manifest.lock */,
 				30BA210F1C957E3100DC883C /* Sources */,
 				30BA21101C957E3100DC883C /* Frameworks */,
 				30BA21111C957E3100DC883C /* Headers */,
@@ -221,7 +218,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 30BA212B1C957E3100DC883C /* Build configuration list for PBXNativeTarget "BlobfishTests" */;
 			buildPhases = (
-				95A44A9DA60EA8343E474592 /* [CP] Check Pods Manifest.lock */,
 				30BA211A1C957E3100DC883C /* Sources */,
 				30BA211B1C957E3100DC883C /* Frameworks */,
 				30BA211C1C957E3100DC883C /* Resources */,
@@ -292,7 +288,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		95A44A9DA60EA8343E474592 /* [CP] Check Pods Manifest.lock */ = {
+		5B7EF28B7C7F156C731D86EE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -303,7 +299,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-BlobfishTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Blobfish-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -465,7 +461,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nodes.Blobfish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -491,7 +487,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nodes.Blobfish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 			};
@@ -499,7 +495,6 @@
 		};
 		30BA212C1C957E3100DC883C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 57781E20B7E9C9FC5C58264C /* Pods-BlobfishTests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = BlobfishTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -511,7 +506,6 @@
 		};
 		30BA212D1C957E3100DC883C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1A0C058DCFF0DC84F0746A1E /* Pods-BlobfishTests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = BlobfishTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
