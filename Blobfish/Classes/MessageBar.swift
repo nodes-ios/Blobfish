@@ -28,9 +28,9 @@ public class MessageBar: UIWindow {
         }
         self.label.lineBreakMode = NSLineBreakMode.byTruncatingTail
         self.label.numberOfLines = 1
-//        self.label.minimumScaleFactor = 0.2
+        self.label.minimumScaleFactor = 0.5
         self.label.textColor = UIColor.white
-        self.label.font = UIFont.preferredFont(forTextStyle: .headline)
+        self.label.font = UIFont.systemFont(ofSize: 13)
         label.sizeToFit()
         self.backgroundColor = UIColor.red
         self.isHidden = true
