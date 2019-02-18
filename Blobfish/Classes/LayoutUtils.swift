@@ -11,8 +11,8 @@ import Foundation
 public struct LayoutUtils {
     
     public static func extraLabelHeightForMessageBar() -> CGFloat {
-        //15.0 is the height of the label in the message bar
-        return safeAreaTop() > 0.0 ? 15.0 : 0.0
+        //16.0 is the height of the label in the message bar
+        return safeAreaTop() > 0.0 ? 16.0 : 0.0
     }
     
     public static func safeAreaTop() -> CGFloat {
