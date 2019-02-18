@@ -17,7 +17,7 @@ public class MessageBar: UIWindow {
         self.translatesAutoresizingMaskIntoConstraints = false
         label.translatesAutoresizingMaskIntoConstraints = false
         label.frame.origin.y = LayoutUtils.safeAreaTop()
-        label.frame.size.height = 16.0
+//        label.frame.size.height = 16.0
         self.addSubview(label)
         
         self.label.backgroundColor = UIColor.clear
@@ -28,10 +28,9 @@ public class MessageBar: UIWindow {
         }
         self.label.lineBreakMode = NSLineBreakMode.byTruncatingTail
         self.label.numberOfLines = 1
-        self.label.minimumScaleFactor = 0.5
+//        self.label.minimumScaleFactor = 0.5
         self.label.textColor = UIColor.white
-        self.label.font = UIFont.boldSystemFont(ofSize: 13)
-        label.sizeToFit()
+        self.label.font = UIFont.preferredFont(forTextStyle: .callout)
         self.backgroundColor = UIColor.red
         self.isHidden = true
         self.windowLevel = UIWindowLevelStatusBar+1;
@@ -40,10 +39,16 @@ public class MessageBar: UIWindow {
     public override func layoutSubviews() {
         label.frame = self.bounds.insetBy(dx: 8, dy: 0)
         label.frame.origin.y = LayoutUtils.safeAreaTop()
-        label.frame.size.height = 16.0
+        if !LayoutUtils.hasTopNotch() {
+            label.center = self.center
+        }
+//        label.frame.size.height = 16.0
+        label.sizeToFit()
     }
     
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+
