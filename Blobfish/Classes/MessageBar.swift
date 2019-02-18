@@ -39,9 +39,7 @@ public class MessageBar: UIWindow {
     public override func layoutSubviews() {
         label.frame = self.bounds.insetBy(dx: 8, dy: 0)
         label.frame.origin.y = LayoutUtils.safeAreaTop()
-        if !LayoutUtils.hasTopNotch() {
-            label.center = self.center
-        }
+        label.center = self.center
 //        label.frame.size.height = 16.0
         label.sizeToFit()
     }
