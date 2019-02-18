@@ -30,7 +30,7 @@ public class MessageBar: UIWindow {
         self.label.numberOfLines = 1
         self.label.minimumScaleFactor = 0.2
         self.label.textColor = UIColor.white
-        self.label.font = UIFont.systemFont(ofSize: 8)
+        self.label.font = UIFont.preferredFont(forTextStyle: .subheadline)
         self.backgroundColor = UIColor.red
         self.isHidden = true
         self.windowLevel = UIWindowLevelStatusBar+1;
