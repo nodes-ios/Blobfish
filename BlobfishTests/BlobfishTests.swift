@@ -7,7 +7,7 @@
 //
 
 import XCTest
-@testable import Blobfish
+//@testable import Blobfish
 
 class BlobfishTests: XCTestCase {
     

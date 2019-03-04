@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		01BBF0121DE23979003AC718 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01BBF0081DE23966003AC718 /* Alamofire.framework */; };
+		2341B7262029CC9C00BECE13 /* LayoutUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2341B7252029CC9C00BECE13 /* LayoutUtils.swift */; };
 		296995931E39469D005B0B6C /* BlobfishTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA21231C957E3100DC883C /* BlobfishTests.swift */; };
 		307ED5341C98AEE7002B7B74 /* Blobfish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA212F1C957F1500DC883C /* Blobfish.swift */; };
 		30925AF81C95892E00895BE6 /* Blobable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA21301C957F1500DC883C /* Blobable.swift */; };
@@ -33,6 +34,7 @@
 		01BBF0081DE23966003AC718 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		01BBF00C1DE23966003AC718 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		01BBF00F1DE23966003AC718 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
+		2341B7252029CC9C00BECE13 /* LayoutUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutUtils.swift; sourceTree = "<group>"; };
 		30925AFA1C9589B800895BE6 /* Blob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blob.swift; sourceTree = "<group>"; };
 		30BA21141C957E3100DC883C /* Blobfish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Blobfish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30BA21171C957E3100DC883C /* Blobfish.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Blobfish.h; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				30925AFA1C9589B800895BE6 /* Blob.swift */,
 				30BA21301C957F1500DC883C /* Blobable.swift */,
 				30BA21331C957F1500DC883C /* AlamofireBlobfishExtension.swift */,
+				2341B7252029CC9C00BECE13 /* LayoutUtils.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				30BA21391C957F7E00DC883C /* MessageBar.swift in Sources */,
+				2341B7262029CC9C00BECE13 /* LayoutUtils.swift in Sources */,
 				30925AF81C95892E00895BE6 /* Blobable.swift in Sources */,
 				307ED5341C98AEE7002B7B74 /* Blobfish.swift in Sources */,
 				30925AFB1C9589B800895BE6 /* Blob.swift in Sources */,
@@ -414,7 +418,7 @@
 				);
 				INFOPLIST_FILE = Blobfish/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(PROJECT_DIR)/Carthage/Build/iOS";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nodes.Blobfish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -437,7 +441,7 @@
 				);
 				INFOPLIST_FILE = Blobfish/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(PROJECT_DIR)/Carthage/Build/iOS";
 				PRODUCT_BUNDLE_IDENTIFIER = com.nodes.Blobfish;
 				PRODUCT_NAME = "$(TARGET_NAME)";

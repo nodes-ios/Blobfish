@@ -13,29 +13,42 @@ public class MessageBar: UIWindow {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-
+        
         self.translatesAutoresizingMaskIntoConstraints = false
+        
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.frame.origin.y = LayoutUtils.safeAreaTop()
+        label.frame.size.height = 18.0
         self.addSubview(label)
         
-        self.label.backgroundColor = UIColor.clear
-        self.label.textAlignment = NSTextAlignment.center
-        self.label.adjustsFontSizeToFitWidth = true
+        label.textAlignment = NSTextAlignment.center
+        label.backgroundColor = UIColor.clear
+        label.adjustsFontSizeToFitWidth = true
         if #available(iOS 9, *) {
             self.label.allowsDefaultTighteningForTruncation = true
         }
-        self.label.lineBreakMode = NSLineBreakMode.byTruncatingTail
-        self.label.numberOfLines = 1
-        self.label.minimumScaleFactor = 0.2
-        self.label.textColor = UIColor.white
-        self.label.font = UIFont.systemFont(ofSize: 8)
-        self.backgroundColor = UIColor.red
-        self.isHidden = true
-        self.windowLevel = UIWindowLevelStatusBar+1;
+        label.lineBreakMode = NSLineBreakMode.byTruncatingTail
+        label.numberOfLines = 1
+        label.textColor = UIColor.white
+        label.font = UIFont.preferredFont(forTextStyle: .callout)
+        
+        backgroundColor = UIColor.red
+        isHidden = true
+        windowLevel = UIWindowLevelStatusBar+1;
     }
     
     public override func layoutSubviews() {
+        
         label.frame = self.bounds.insetBy(dx: 8, dy: 0)
+        label.frame.origin.y = LayoutUtils.safeAreaTop()
+        label.frame.size.height = 18.0
+        
+        if LayoutUtils.hasTopNotch() {
+            label.center = CGPoint(x: center.x, y: center.y + 14)
+        } else {
+            label.center = self.center
+        }
+        
     }
     
     required public init?(coder aDecoder: NSCoder) {
