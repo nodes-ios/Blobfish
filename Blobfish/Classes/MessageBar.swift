@@ -34,7 +34,7 @@ public class MessageBar: UIWindow {
         
         backgroundColor = UIColor.red
         isHidden = true
-        windowLevel = UIWindowLevelStatusBar+1;
+        windowLevel = UIWindow.Level.statusBar+1;
     }
     
     public override func layoutSubviews() {
