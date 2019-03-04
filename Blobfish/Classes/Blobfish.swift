@@ -234,7 +234,7 @@ public class Blobfish {
     // MARK: - Utils -
     
     private func degreesToRadians(_ degrees: CGFloat) -> CGFloat {
-        return (degrees * CGFloat(M_PI) / CGFloat(180.0))
+        return (degrees * CGFloat(Double.pi) / CGFloat(180.0))
     }
     
     private func transformForOrientation(_ orientation: UIInterfaceOrientation) -> CGAffineTransform {
