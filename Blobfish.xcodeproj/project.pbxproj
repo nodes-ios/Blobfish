@@ -9,25 +9,13 @@
 /* Begin PBXBuildFile section */
 		01BBF0121DE23979003AC718 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01BBF0081DE23966003AC718 /* Alamofire.framework */; };
 		2341B7262029CC9C00BECE13 /* LayoutUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2341B7252029CC9C00BECE13 /* LayoutUtils.swift */; };
-		296995931E39469D005B0B6C /* BlobfishTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA21231C957E3100DC883C /* BlobfishTests.swift */; };
 		307ED5341C98AEE7002B7B74 /* Blobfish.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA212F1C957F1500DC883C /* Blobfish.swift */; };
 		30925AF81C95892E00895BE6 /* Blobable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA21301C957F1500DC883C /* Blobable.swift */; };
 		30925AFB1C9589B800895BE6 /* Blob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30925AFA1C9589B800895BE6 /* Blob.swift */; };
 		30BA21181C957E3100DC883C /* Blobfish.h in Headers */ = {isa = PBXBuildFile; fileRef = 30BA21171C957E3100DC883C /* Blobfish.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		30BA211F1C957E3100DC883C /* Blobfish.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30BA21141C957E3100DC883C /* Blobfish.framework */; };
 		30BA21391C957F7E00DC883C /* MessageBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA21311C957F1500DC883C /* MessageBar.swift */; };
 		30CC1B1F1C95858900DB923F /* AlamofireBlobfishExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30BA21331C957F1500DC883C /* AlamofireBlobfishExtension.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		30BA21201C957E3100DC883C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 30BA210B1C957E3100DC883C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 30BA21131C957E3100DC883C;
-			remoteInfo = Blobfish;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		01BBF0031DE23966003AC718 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
@@ -39,9 +27,6 @@
 		30BA21141C957E3100DC883C /* Blobfish.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Blobfish.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30BA21171C957E3100DC883C /* Blobfish.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Blobfish.h; sourceTree = "<group>"; };
 		30BA21191C957E3100DC883C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		30BA211E1C957E3100DC883C /* BlobfishTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlobfishTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		30BA21231C957E3100DC883C /* BlobfishTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlobfishTests.swift; sourceTree = "<group>"; };
-		30BA21251C957E3100DC883C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		30BA212F1C957F1500DC883C /* Blobfish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blobfish.swift; sourceTree = "<group>"; };
 		30BA21301C957F1500DC883C /* Blobable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blobable.swift; sourceTree = "<group>"; };
 		30BA21311C957F1500DC883C /* MessageBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBar.swift; sourceTree = "<group>"; };
@@ -54,14 +39,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				01BBF0121DE23979003AC718 /* Alamofire.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		30BA211B1C957E3100DC883C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				30BA211F1C957E3100DC883C /* Blobfish.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,7 +85,6 @@
 			isa = PBXGroup;
 			children = (
 				30BA21161C957E3100DC883C /* Blobfish */,
-				30BA21221C957E3100DC883C /* BlobfishTests */,
 				30BA213A1C957FC000DC883C /* Frameworks */,
 				30BA21151C957E3100DC883C /* Products */,
 			);
@@ -118,7 +94,6 @@
 			isa = PBXGroup;
 			children = (
 				30BA21141C957E3100DC883C /* Blobfish.framework */,
-				30BA211E1C957E3100DC883C /* BlobfishTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -131,15 +106,6 @@
 				30BA21191C957E3100DC883C /* Info.plist */,
 			);
 			path = Blobfish;
-			sourceTree = "<group>";
-		};
-		30BA21221C957E3100DC883C /* BlobfishTests */ = {
-			isa = PBXGroup;
-			children = (
-				30BA21231C957E3100DC883C /* BlobfishTests.swift */,
-				30BA21251C957E3100DC883C /* Info.plist */,
-			);
-			path = BlobfishTests;
 			sourceTree = "<group>";
 		};
 		30BA212E1C957F1500DC883C /* Classes */ = {
@@ -198,24 +164,6 @@
 			productReference = 30BA21141C957E3100DC883C /* Blobfish.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		30BA211D1C957E3100DC883C /* BlobfishTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 30BA212B1C957E3100DC883C /* Build configuration list for PBXNativeTarget "BlobfishTests" */;
-			buildPhases = (
-				30BA211A1C957E3100DC883C /* Sources */,
-				30BA211B1C957E3100DC883C /* Frameworks */,
-				30BA211C1C957E3100DC883C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				30BA21211C957E3100DC883C /* PBXTargetDependency */,
-			);
-			name = BlobfishTests;
-			productName = BlobfishTests;
-			productReference = 30BA211E1C957E3100DC883C /* BlobfishTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -223,16 +171,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = Nodes;
 				TargetAttributes = {
 					30BA21131C957E3100DC883C = {
 						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0800;
-					};
-					30BA211D1C957E3100DC883C = {
-						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -249,20 +193,12 @@
 			projectRoot = "";
 			targets = (
 				30BA21131C957E3100DC883C /* Blobfish */,
-				30BA211D1C957E3100DC883C /* BlobfishTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		30BA21121C957E3100DC883C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		30BA211C1C957E3100DC883C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -285,23 +221,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		30BA211A1C957E3100DC883C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				296995931E39469D005B0B6C /* BlobfishTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		30BA21211C957E3100DC883C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 30BA21131C957E3100DC883C /* Blobfish */;
-			targetProxy = 30BA21201C957E3100DC883C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		30BA21261C957E3100DC883C /* Debug */ = {
@@ -313,14 +233,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -366,14 +294,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -423,7 +359,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.nodes.Blobfish;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -447,29 +384,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
-		30BA212C1C957E3100DC883C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = BlobfishTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nodes.BlobfishTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Debug;
-		};
-		30BA212D1C957E3100DC883C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = BlobfishTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.nodes.BlobfishTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -490,15 +406,6 @@
 			buildConfigurations = (
 				30BA21291C957E3100DC883C /* Debug */,
 				30BA212A1C957E3100DC883C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		30BA212B1C957E3100DC883C /* Build configuration list for PBXNativeTarget "BlobfishTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				30BA212C1C957E3100DC883C /* Debug */,
-				30BA212D1C957E3100DC883C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -27,7 +27,7 @@ public class Blobfish {
     
     var alertWindow = UIWindow(frame: UIScreen.main.bounds) {
         didSet {
-            alertWindow.windowLevel = UIWindowLevelAlert + 1
+            alertWindow.windowLevel = UIWindow.Level.alert + 1
         }
     }
     
@@ -44,7 +44,7 @@ public class Blobfish {
     public var showAlertBlock: ErrorHandlerShowAlertBlock = {
         (title, message, actions) in
 
-        let alert = UIAlertController(title: title, message:message, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: title, message:message, preferredStyle: UIAlertController.Style.alert)
         for action in actions {
             alert.addAction(UIAlertAction(title: action.title, style: .default, handler: { (_) in
                 Blobfish.hideAlertWindow()
@@ -162,7 +162,7 @@ public class Blobfish {
         
         self.overlayBar.isHidden = false
         
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIViewAnimationOptions.beginFromCurrentState, animations: { () -> Void in
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: UIView.AnimationOptions.beginFromCurrentState, animations: { () -> Void in
             
             self.overlayBar.frame.origin.y = -self.overlayBar.frame.size.height
             
@@ -186,7 +186,7 @@ public class Blobfish {
         //status bar frame with safe area layout
         var frame = CGRect.init(x: UIApplication.shared.statusBarFrame.origin.x, y: UIApplication.shared.statusBarFrame.origin.y, width: UIApplication.shared.statusBarFrame.size.width, height: UIApplication.shared.statusBarFrame.size.height + LayoutUtils.extraLabelHeightForMessageBar())
         
-        if UIInterfaceOrientationIsLandscape(orientation) {
+        if orientation.isLandscape {
             frame = frame.rectByReversingSize()
             if  UIDevice.current.userInterfaceIdiom == .phone {
                 frame.origin.x = frame.size.width - frame.origin.x
@@ -234,7 +234,7 @@ public class Blobfish {
     // MARK: - Utils -
     
     private func degreesToRadians(_ degrees: CGFloat) -> CGFloat {
-        return (degrees * CGFloat(M_PI) / CGFloat(180.0))
+        return (degrees * CGFloat(Double.pi) / CGFloat(180.0))
     }
     
     private func transformForOrientation(_ orientation: UIInterfaceOrientation) -> CGAffineTransform {
