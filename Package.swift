@@ -24,8 +24,5 @@ let package = Package(
         .target(
             name: "Blobfish",
             dependencies: ["Alamofire"]),
-        .testTarget(
-            name: "BlobfishTests",
-            dependencies: ["Blobfish"]),
     ]
 )
